@@ -1,17 +1,35 @@
-from flask import Flask
+from flask import Flask, url_for
 import json
 from utils import get_html_filenames_in_directory
 from os.path import join
+from functools import wraps
+
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():  # put application's code here
+def handle_errors(func):
+    """
+    A decorator that wraps around any endpoint to catch and handle any error that may occur
+    :param func: Callback function
+    :return: the wrapped function
+    """
+    @wraps(func)
+    def wrapper_func(*args, **kwargs):
+        try:
+            func(*args, **kwargs)
+        except Exception as e:
+            print(e)
+            return {"error": "An internal server error has occured."}, 500
+    return wrapper_func
+
+@app.route("/")
+def hello():
     return {"version": "1.0"}
 
 
 @app.route('/erstiwoche')
+@handle_errors
 def erstiwoche():
     with open("data/gi/erstsemester/erstiwoche.json") as file:
         data = json.load(file)
@@ -19,6 +37,7 @@ def erstiwoche():
 
 
 @app.route("/erstiwochenende")
+@handle_errors
 def erstiwochenende():
     with open("data/gi/erstsemester/erstiwochenende.json") as file:
         data = json.load(file)
@@ -26,6 +45,7 @@ def erstiwochenende():
 
 
 @app.route("/erstistundenplan")
+@handle_errors
 def stundenplan():
     with open("data/gi/erstsemester/stundenplan.json") as file:
         data = json.load(file)
@@ -33,6 +53,7 @@ def stundenplan():
 
 
 @app.route("/fachschaft_rollen")
+@handle_errors
 def rollen():
     with open("data/gi/fachschaft/rollen.json") as file:
         data = json.load(file)
@@ -40,6 +61,7 @@ def rollen():
 
 
 @app.route("/praesidienste")
+@handle_errors
 def praesidienste():
     with open("data/gi/start/praesidienste.json") as file:
         data = json.load(file)
@@ -47,6 +69,7 @@ def praesidienste():
 
 
 @app.route("/termine")
+@handle_errors
 def termine():
     with open("data/gi/start/termine.json") as file:
         data = json.load(file)
@@ -54,6 +77,7 @@ def termine():
 
 
 @app.route("/jahrgaenge")
+@handle_errors
 def jahrgaenge():
     with open("data/gi/studium/jahrgaenge.json") as file:
         data = json.load(file)
@@ -61,6 +85,7 @@ def jahrgaenge():
 
 
 @app.route("/joblistings")
+@handle_errors
 def jobs():
     path = "data/gi/jobs"
     filenames = get_html_filenames_in_directory(path)
@@ -74,6 +99,7 @@ def jobs():
 
 
 @app.route("/news")
+@handle_errors
 def news():
     path = "data/gi/news"
     filenames = get_html_filenames_in_directory(path)
