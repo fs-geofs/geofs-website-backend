@@ -1,8 +1,14 @@
 from flask import Flask, url_for
 import json
-from utils import get_html_filenames_in_directory
+from utils import get_html_filenames_in_directory, create_data_folder_structure
 from os.path import join
 from functools import wraps
+
+
+# Check if the data folder structure exists.
+# If not, create it
+create_data_folder_structure()
+# todo: check if files conform to schema
 
 
 app = Flask(__name__)
@@ -91,6 +97,7 @@ def jahrgaenge():
 @app.route("/joblistings")
 @handle_errors
 def jobs():
+    # todo: only add html files
     path = "data/gi/jobs"
     filenames = get_html_filenames_in_directory(path)
 
@@ -105,6 +112,7 @@ def jobs():
 @app.route("/news")
 @handle_errors
 def news():
+    # todo: only add html files
     path = "data/gi/news"
     filenames = get_html_filenames_in_directory(path)
 
