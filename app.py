@@ -17,7 +17,11 @@ def handle_errors(func):
     @wraps(func)
     def wrapper_func(*args, **kwargs):
         try:
-            func(*args, **kwargs)
+            return func(*args, **kwargs)
+        except FileNotFoundError as e:
+            print("Could not find specified file")
+            print(e)
+            return {"error": "Could not locate a specific file. See console output for details"}
         except Exception as e:
             print(e)
             return {"error": "An internal server error has occured."}, 500
