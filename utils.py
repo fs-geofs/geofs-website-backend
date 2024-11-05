@@ -5,7 +5,7 @@ import shutil
 import json
 from jsonschema import Draft202012Validator
 
-from datafiles import DATAFILES
+from datafiles import DATAFILES, OTHER_FILES
 
 
 def validate_schema(schema: dict):
@@ -50,7 +50,14 @@ def get_html_filenames_in_directory(path: str) -> list[str]:
 
 
 def check_template_file_presence():
+
+    # json files
     for template_path in [DATAFILES[file]["template"] for file in DATAFILES]:
+        if not os.path.exists(template_path):
+            raise FileNotFoundError("Could not locate template: " + template_path)
+
+    # other files
+    for template_path in [OTHER_FILES[file]["template"] for file in OTHER_FILES]:
         if not os.path.exists(template_path):
             raise FileNotFoundError("Could not locate template: " + template_path)
 
@@ -96,6 +103,10 @@ def create_data_folder_structure():
     for datafile in [DATAFILES[file] for file in DATAFILES]:
         if not os.path.exists(datafile["data"]):
             shutil.copy(datafile["template"], datafile["data"])
+
+    for other_file in [OTHER_FILES[file] for file in OTHER_FILES]:
+        if not os.path.exists(other_file["data"]):
+            shutil.copy(other_file["template"], other_file["data"])
 
 
 if __name__=="__main__":

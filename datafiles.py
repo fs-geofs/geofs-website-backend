@@ -40,3 +40,26 @@ DATAFILES = {
         "schema": "schemas/praesidienste.schema.json"
     }
 }
+
+OTHER_FILES = {
+    "foto_gi": {
+        "data": "data/gi/fachschaft.jpg",
+        "template": "data_templates/data/gi/fachschaft.jpg"
+    },
+    "news_template": {
+        "data": "data/gi/news/2020-12-31_welcome.html",
+        "template": "data_templates/data/gi/news/2020-12-31_welcome.html"
+    },
+    "news_readme": {
+        "data": "data/gi/news/readme.txt",
+        "template": "data_templates/data/gi/news/readme.txt"
+    },
+    "jobs_template": {
+        "data": "data/gi/jobs/2024-12-31_ifgi.html",
+        "template": "data_templates/data/gi/jobs/2024-12-31_ifgi.html"
+    },
+    "jobs_readme": {
+        "data": "data/gi/jobs/readme.txt",
+        "template": "data_templates/data/gi/jobs/readme.txt"
+    }
+}
