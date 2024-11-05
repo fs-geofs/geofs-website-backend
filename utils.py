@@ -5,6 +5,11 @@ import shutil
 
 
 def get_html_filenames_in_directory(path: str) -> list[str]:
+    """
+    Lists all .html files within a given directory
+    :param path: path to the directory
+    :return: List of all html filenames
+    """
     # list all files in given directory
     files = [f for f in listdir(path) if isfile(join(path, f)) and f.split(".")[-1] == "html"]
     files.sort(reverse=True)
