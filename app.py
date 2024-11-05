@@ -140,5 +140,12 @@ def news():
     return data
 
 
+@app.route("/geoloek_praesidienste")
+def geoloek_praesidienste():
+    with open(DATAFILES["geoloek_praesidienste"]["data"]) as file:
+        data = json.load(file)
+    return data
+
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

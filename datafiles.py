@@ -33,5 +33,10 @@ DATAFILES = {
         "data": "data/gi/erstsemester/stundenplan.json",
         "template": "data_templates/data/gi/erstsemester/stundenplan.json",
         "schema": "schemas/stundenplan.schema.json"
+    },
+    "geoloek_praesidienste": {
+        "data": "data/geoloek/praesidienste.json",
+        "template": "data_templates/data/geoloek/praesidienste.json",
+        "schema": "schemas/praesidienste.schema.json"
     }
 }
