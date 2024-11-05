@@ -145,7 +145,7 @@ def foto_gi_fachschaft():
     with open(OTHER_FILES["foto_gi"]["data"], "rb") as file:
         data = file.read()
     response = make_response(data)
-    response.headers["Content-Type"] = "iamge/jpeg"
+    response.headers["Content-Type"] = "image/jpeg"
     response.headers["Content-Disposition"] = "inline; filename=fachschaft.jpg"
     return response
 
