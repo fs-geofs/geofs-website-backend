@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask, make_response
 import json
 import utils
 from os.path import join
@@ -138,6 +138,16 @@ def news():
             "content": filecontent
         })
     return data
+
+
+@app.route("/foto_gi")
+def foto_gi_fachschaft():
+    with open("data/gi/fachschaft.jpg", "rb") as file:
+        data = file.read()
+    response = make_response(data)
+    response.headers["Content-Type"] = "iamge/jpeg"
+    response.headers["Content-Disposition"] = "inline; filename=fachschaft.jpg"
+    return response
 
 
 @app.route("/geoloek_praesidienste")
