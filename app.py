@@ -4,7 +4,7 @@ import utils
 from os.path import join
 from functools import wraps
 
-from datafiles import DATAFILES
+from datafiles import DATAFILES, OTHER_FILES
 
 # Check if all data templates are there:
 utils.check_template_file_presence()
@@ -142,7 +142,7 @@ def news():
 
 @app.route("/foto_gi")
 def foto_gi_fachschaft():
-    with open("data/gi/fachschaft.jpg", "rb") as file:
+    with open(OTHER_FILES["foto_gi"]["data"], "rb") as file:
         data = file.read()
     response = make_response(data)
     response.headers["Content-Type"] = "iamge/jpeg"
