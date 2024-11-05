@@ -97,7 +97,7 @@ def jahrgaenge():
 @app.route("/joblistings")
 @handle_errors
 def jobs():
-    # todo: only add html files
+
     path = "data/gi/jobs"
     filenames = get_html_filenames_in_directory(path)
 
@@ -112,7 +112,7 @@ def jobs():
 @app.route("/news")
 @handle_errors
 def news():
-    # todo: only add html files
+
     path = "data/gi/news"
     filenames = get_html_filenames_in_directory(path)
 
