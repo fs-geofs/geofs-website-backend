@@ -1,14 +1,25 @@
 from flask import Flask, url_for
 import json
-from utils import get_html_filenames_in_directory, create_data_folder_structure
+import utils
 from os.path import join
 from functools import wraps
 
 
+# Check if all data templates are there:
+utils.check_template_file_presence()
+
+# check if all schema files are there:
+utils.check_schema_file_presence()
+
+# check if all schema files are valid jsonschema-2020-12 schemas
+utils.check_all_schema_file_validity()
+
 # Check if the data folder structure exists.
 # If not, create it
-create_data_folder_structure()
-# todo: check if files conform to schema
+utils.create_data_folder_structure()
+
+# check if all data files conform to their schema
+utils.check_all_data_files_against_schema()
 
 
 app = Flask(__name__)
@@ -99,7 +110,7 @@ def jahrgaenge():
 def jobs():
 
     path = "data/gi/jobs"
-    filenames = get_html_filenames_in_directory(path)
+    filenames = utils.get_html_filenames_in_directory(path)
 
     data = []
     for filename in filenames:
@@ -114,7 +125,7 @@ def jobs():
 def news():
 
     path = "data/gi/news"
-    filenames = get_html_filenames_in_directory(path)
+    filenames = utils.get_html_filenames_in_directory(path)
 
     data = []
     for filename in filenames:
