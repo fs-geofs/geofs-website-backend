@@ -4,6 +4,7 @@ import utils
 from os.path import join
 from functools import wraps
 
+from datafiles import DATAFILES
 
 # Check if all data templates are there:
 utils.check_template_file_presence()
@@ -52,7 +53,7 @@ def hello():
 @app.route('/erstiwoche')
 @handle_errors
 def erstiwoche():
-    with open("data/gi/erstsemester/erstiwoche.json") as file:
+    with open(DATAFILES["gi_erstiwoche"]["data"]) as file:
         data = json.load(file)
     return data
 
@@ -60,7 +61,7 @@ def erstiwoche():
 @app.route("/erstiwochenende")
 @handle_errors
 def erstiwochenende():
-    with open("data/gi/erstsemester/erstiwochenende.json") as file:
+    with open(DATAFILES["gi_erstiwochenende"]["data"]) as file:
         data = json.load(file)
     return data
 
@@ -68,7 +69,7 @@ def erstiwochenende():
 @app.route("/erstistundenplan")
 @handle_errors
 def stundenplan():
-    with open("data/gi/erstsemester/stundenplan.json") as file:
+    with open(DATAFILES["gi_stundenplan"]["data"]) as file:
         data = json.load(file)
     return data
 
@@ -76,7 +77,7 @@ def stundenplan():
 @app.route("/fachschaft_rollen")
 @handle_errors
 def rollen():
-    with open("data/gi/fachschaft/rollen.json") as file:
+    with open(DATAFILES["gi_rollen"]["data"]) as file:
         data = json.load(file)
     return data
 
@@ -84,7 +85,7 @@ def rollen():
 @app.route("/praesidienste")
 @handle_errors
 def praesidienste():
-    with open("data/gi/start/praesidienste.json") as file:
+    with open(DATAFILES["gi_praesidienste"]["data"]) as file:
         data = json.load(file)
     return data
 
@@ -92,7 +93,7 @@ def praesidienste():
 @app.route("/termine")
 @handle_errors
 def termine():
-    with open("data/gi/start/termine.json") as file:
+    with open(DATAFILES["gi_termine"]["data"]) as file:
         data = json.load(file)
     return data
 
@@ -100,7 +101,7 @@ def termine():
 @app.route("/jahrgaenge")
 @handle_errors
 def jahrgaenge():
-    with open("data/gi/studium/jahrgaenge.json") as file:
+    with open(DATAFILES["gi_jahrgaenge"]["data"]) as file:
         data = json.load(file)
     return data
 
