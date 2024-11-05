@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "required": ["montag", "dienstag", "mittwoch", "donnerstag", "freitag"],
+  "properties": {
+    "montag": {
+      "$ref": "#/$defs/daily"
+    },
+    "dienstag": {
+      "$ref": "#/$defs/daily"
+    },
+    "mittwoch": {
+      "$ref": "#/$defs/daily"
+    },
+    "donnerstag": {
+      "$ref": "#/$defs/daily"
+    },
+    "freitag": {
+      "$ref": "#/$defs/daily"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "daily": {
+      "type": "object",
+      "required": ["8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"],
+      "properties": {
+        "8": {
+          "type": "string"
+        },
+        "9": {
+          "type": "string"
+        },
+        "10": {
+          "type": "string"
+        },
+        "11": {
+          "type": "string"
+        },
+        "12": {
+          "type": "string"
+        },
+        "13": {
+          "type": "string"
+        },
+        "14": {
+          "type": "string"
+        },
+        "15": {
+          "type": "string"
+        },
+        "16": {
+          "type": "string"
+        },
+        "17": {
+          "type": "string"
+        },
+        "18": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "type": "object",
+  "required": ["year", "start", "end", "schedule"],
+  "additionalProperties": false,
+  "properties": {
+    "year": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string"
+    },
+    "end": {
+      "type": "string"
+    },
+    "schedule": {
+      "type": "object",
+      "required": ["montag", "dienstag", "mittwoch", "donnerstag", "freitag"],
+      "properties": {
+        "montag": {
+          "$ref": "#/$defs/dailySchedule"
+        },
+        "dienstag": {
+          "$ref": "#/$defs/dailySchedule"
+        },
+        "mittwoch": {
+          "$ref": "#/$defs/dailySchedule"
+        },
+        "donnerstag": {
+          "$ref": "#/$defs/dailySchedule"
+        },
+        "freitag": {
+          "$ref": "#/$defs/dailySchedule"
+        }
+      },
+      "additionalProperties": false
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/location"
+      }
+    }
+  },
+  "$defs": {
+    "dailySchedule": {
+      "type": "object",
+      "required": ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"],
+      "properties": {
+        "9": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "10": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "11": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "12": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "13": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "14": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "15": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "16": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "17": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "18": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "19": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "20": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "21": {
+          "$ref": "#/$defs/hourlyProgram"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hourlyProgram": {
+      "type": ["object", "null"],
+      "required": [],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "location": {
+      "type": "object",
+      "required": ["title", "erklaerung", "detail", "osmlink"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "erklaerung": {
+          "type": "string"
+        },
+        "detail": {
+          "type": ["string", "null"]
+        },
+        "osmlink": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

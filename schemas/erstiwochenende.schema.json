@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": ["hin", "rueck", "kosten", "url"],
+  "properties": {
+    "hin":{
+      "type": "string"
+    },
+    "rueck": {
+      "type": "string"
+    },
+    "kosten": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

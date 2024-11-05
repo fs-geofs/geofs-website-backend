@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "required": ["wahldatum", "protokoll", "roles"],
+  "properties": {
+    "wahldatum": {
+      "type": "string"
+    },
+    "protokoll": {
+      "type": "string",
+      "format": "url"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/role"
+      }
+    },
+    "_comment": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "role": {
+      "type": "object",
+      "required": ["role", "names", "description"],
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "names": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

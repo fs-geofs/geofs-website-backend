@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "required": ["montag", "dienstag", "mittwoch", "donnerstag", "freitag"],
+  "properties": {
+    "montag": {
+      "$ref": "#/$defs/dailySchedule"
+    },
+    "dienstag": {
+      "$ref": "#/$defs/dailySchedule"
+    },
+    "mittwoch": {
+      "$ref": "#/$defs/dailySchedule"
+    },
+    "donnerstag": {
+      "$ref": "#/$defs/dailySchedule"
+    },
+    "freitag": {
+      "$ref": "#/$defs/dailySchedule"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "dailySchedule" : {
+      "type": "object",
+      "required": ["8", "10", "12", "14", "16", "18"],
+      "properties": {
+        "8": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "10": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "12": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "14": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "16": {
+          "$ref": "#/$defs/hourlyProgram"
+        },
+        "18": {
+          "$ref": "#/$defs/hourlyProgram"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hourlyProgram": {
+      "type": ["object", "null"],
+      "required": ["title", "location", "address", "qisserverlink", "learnweblink"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "qisserverlink": {
+          "type": "string"
+        },
+        "learnweblink": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

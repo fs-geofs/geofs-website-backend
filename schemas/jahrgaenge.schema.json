@@ -1,0 +1,16 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["jahr", "name"],
+    "properties": {
+      "jahr": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}

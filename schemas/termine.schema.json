@@ -1,0 +1,19 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [],
+    "properties": {
+      "was": {
+        "type": "string"
+      },
+      "von": {
+        "type": "string"
+      },
+      "bis": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}
