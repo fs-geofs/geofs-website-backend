@@ -2,6 +2,18 @@ import os.path
 from os import listdir
 from os.path import isfile, join
 import shutil
+import json
+from jsonschema import Draft202012Validator
+
+REQUIRED_DATA_FILE_PATHES = [
+    "data/gi/studium/jahrgaenge.json",
+    "data/gi/start/praesidienste.json",
+    "data/gi/start/termine.json",
+    "data/gi/fachschaft/rollen.json",
+    "data/gi/erstsemester/erstiwoche.json",
+    "data/gi/erstsemester/erstiwochenende.json",
+    "data/gi/erstsemester/stundenplan.json",
+]
 
 
 def get_html_filenames_in_directory(path: str) -> list[str]:
