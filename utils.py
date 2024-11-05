@@ -16,6 +16,12 @@ def get_html_filenames_in_directory(path: str) -> list[str]:
     return files
 
 
+def check_template_file_presence():
+    for filepath in REQUIRED_DATA_FILE_PATHES:
+        if not os.path.exists("data_templates/" + filepath):
+            raise FileNotFoundError("Could not locate template: data_templates/" + filepath)
+
+
 def create_data_folder_structure():
 
     # order of directories is important
