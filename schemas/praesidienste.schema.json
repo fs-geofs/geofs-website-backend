@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "required": ["montag", "dienstag", "mittwoch", "donnerstag", "freitag"],
+  "required": ["montag", "dienstag", "mittwoch", "donnerstag", "freitag", "stand"],
   "properties": {
     "montag": {
       "$ref": "#/$defs/daily"
@@ -16,6 +16,9 @@
     },
     "freitag": {
       "$ref": "#/$defs/daily"
+    },
+    "stand": {
+      "type": "string"
     }
   },
   "additionalProperties": false,
