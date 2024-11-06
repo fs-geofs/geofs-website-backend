@@ -6,21 +6,33 @@ from functools import wraps
 
 from datafiles import DATAFILES, OTHER_FILES
 
-# Check if all data templates are there:
-utils.check_template_file_presence()
+from errors import IntegrityError
 
-# check if all schema files are there:
-utils.check_schema_file_presence()
+import sys
 
-# check if all schema files are valid jsonschema-2020-12 schemas
-utils.check_all_schema_file_validity()
 
-# Check if the data folder structure exists.
-# If not, create it
-utils.create_data_folder_structure()
+try:
+    utils.check_template_file_presence()  # Check if all data templates are there:
+    utils.check_schema_file_presence()  # check if all schema files are there:
+    utils.check_all_schema_file_validity()  # check if all schema files are valid jsonschema-2020-12 schemas
+    utils.create_data_folder_structure()  # Check if the data folder structure exists; If not, create it
+    utils.check_all_data_files_against_schema()  # check if all data files conform to their schema
+except IntegrityError as e:
+    print("Startup Checks for backend server failed.")
+    print(e)
 
-# check if all data files conform to their schema
-utils.check_all_data_files_against_schema()
+    # DO NOT CHANGE EXIT CODE 4!!!!!!
+    # Code 4 is required to take effect in gunicorn deployment
+    # Gunicorn is used inside Docker build
+    sys.exit(4)
+except Exception as e:
+    print("Startup Checks for backend server failed. An unforseen error occured:")
+    print(e)
+
+    # DO NOT CHANGE EXIT CODE 4!!!!!!
+    # Code 4 is required to take effect in gunicorn deployment
+    # Gunicorn is used inside Docker build
+    sys.exit(4)
 
 
 app = Flask(__name__)
