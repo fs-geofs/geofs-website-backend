@@ -45,7 +45,7 @@ def validate_json_file_against_schema_file(schema_path: str, data_path: str):
         with open(data_path) as datafile:
             data = json.load(datafile)
     except JSONDecodeError as e:
-        raise IntegrityError(f"{schema_path} is not a valid JSON-File. Check the file's syntax and try again.\n" +
+        raise IntegrityError(f"{data_path} is not a valid JSON-File. Check the file's syntax and try again.\n" +
                              str(e))
 
     try:
