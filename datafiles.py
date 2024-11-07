@@ -1,4 +1,47 @@
-DATAFILES = {
+from typing import TypedDict
+from jsonschema import Draft202012Validator
+
+
+###############################################
+#  Classes for type hinting the dictionaries  #
+###############################################
+
+class Datafile(TypedDict):
+    data: str
+    template: str
+    schema: str
+    schema_validator: Draft202012Validator | None
+
+
+class DatafileDict(TypedDict):
+    gi_jahrgaenge: Datafile
+    gi_praesidienste: Datafile
+    gi_termine: Datafile
+    gi_rollen: Datafile
+    gi_erstiwoche: Datafile
+    gi_erstiwochenende: Datafile
+    gi_stundenplan: Datafile
+    geoloek_praesidienste: Datafile
+
+
+class Otherfile(TypedDict):
+    data: str
+    template: str
+
+
+class OtherfileDict(TypedDict):
+    foto_gi: Otherfile
+    news_template: Otherfile
+    news_readme: Otherfile
+    jobs_template: Otherfile
+    jobs_readme: Otherfile
+
+
+######################
+#  The dictionaries  #
+######################
+
+DATAFILES: DatafileDict = {
     "gi_jahrgaenge": {
         "data": "data/gi/studium/jahrgaenge.json",
         "template": "data_templates/data/gi/studium/jahrgaenge.json",
@@ -49,7 +92,7 @@ DATAFILES = {
     }
 }
 
-OTHER_FILES = {
+OTHER_FILES: OtherfileDict = {
     "foto_gi": {
         "data": "data/gi/fachschaft.jpg",
         "template": "data_templates/data/gi/fachschaft.jpg"
