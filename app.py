@@ -153,6 +153,7 @@ def news():
 
 
 @app.route("/foto_gi")
+@handle_errors
 def foto_gi_fachschaft():
     with open(OTHER_FILES["foto_gi"]["data"], "rb") as file:
         data = file.read()
@@ -163,6 +164,7 @@ def foto_gi_fachschaft():
 
 
 @app.route("/geoloek_praesidienste")
+@handle_errors
 def geoloek_praesidienste():
     with open(DATAFILES["geoloek_praesidienste"]["data"]) as file:
         data = json.load(file)
