@@ -90,7 +90,7 @@
     },
     "hourlyProgram": {
       "type": ["object", "null"],
-      "required": [],
+      "required": ["title", "detail"],
       "properties": {
         "title": {
           "type": "string"
