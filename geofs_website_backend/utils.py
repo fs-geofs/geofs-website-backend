@@ -9,9 +9,9 @@ from json.decoder import JSONDecodeError
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import SchemaError, ValidationError
 
-from datafiles import DATAFILES, OTHER_FILES
+from .datafiles import DATAFILES, OTHER_FILES
 
-from errors import IntegrityError
+from .errors import IntegrityError
 
 
 def validate_schema(schema: dict):

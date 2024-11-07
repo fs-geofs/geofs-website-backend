@@ -2,13 +2,13 @@ from flask import Flask, make_response
 import json
 
 from jsonschema.exceptions import ValidationError
-import utils
+from . import utils
 from os.path import join
 from functools import wraps
 
-from datafiles import DATAFILES, OTHER_FILES
+from .datafiles import DATAFILES, OTHER_FILES
 
-from errors import IntegrityError
+from .errors import IntegrityError
 
 import sys
 
@@ -188,7 +188,3 @@ def geoloek_praesidienste():
         data = json.load(file)
     utils.validate_dict_againt_schema(DATAFILES["geoloek_praesidienste"]["schema_validator"], data)
     return data
-
-
-if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
