@@ -11,7 +11,7 @@
         "type": "string"
       },
       "bis": {
-        "type": "string"
+        "type": ["string", "null"]
       }
     },
     "additionalProperties": false
