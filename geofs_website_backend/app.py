@@ -1,4 +1,4 @@
-from flask import Flask, make_response
+from flask import Flask, make_response, request
 import json
 
 from jsonschema.exceptions import ValidationError
@@ -154,12 +154,45 @@ def jobs():
 @app.route("/news")
 @handle_errors
 def news():
+    # This URL has support for a query param called page (/news?page=2)
+    # This param must be an integer >= 0
+    # Reason: If the website grows and we have more and more news articles, it will eventually become slow
+    # if all articles had to be opened and sent to the frontend
+    # Therefore, only the first 5 latest articles are read by default (page=0),
+    # the next 5 articles can be read on page 1, and so on...
 
     path = "data/gi/news"
     filenames = utils.get_html_filenames_in_directory(path)
 
+    page = request.args.get("page")
+    items_per_page = 5
+
+    # set page parameter in case it was not given in URL
+    if page is None:
+        page = 0
+
+    # cast page to integer
+    try:
+        page = int(page)
+    except ValueError:
+        page = 0
+
+    # ignore negative page numbers
+    if page < 0:
+        page = 0
+
+    if page*items_per_page >= len(filenames):
+        page = 0
+
+    start_index = page*items_per_page
+    end_index = start_index + items_per_page
+
+    response = {
+        "next": page+1 if (page+1)*items_per_page < len(filenames) else None,
+        "prev": page-1 if page != 0 else None
+    }
     data = []
-    for filename in filenames:
+    for filename in filenames[start_index:end_index]:
         with open(join(path, filename)) as file:
             filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
         data.append({
@@ -167,7 +200,8 @@ def news():
             "date": filename.split("_")[0],
             "content": filecontent
         })
-    return data
+    response["news"] = data
+    return response
 
 
 @app.route("/foto_gi")
