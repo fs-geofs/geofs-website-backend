@@ -1,0 +1,27 @@
+{
+  "stand": "01.01.1901",
+  "fstermine": [
+    {
+      "date": "01.01.1901",
+      "description": "foo",
+      "infolink": null
+    },
+    {
+      "date": "01.01.1901",
+      "description": "bar",
+      "infolink": "https://example.com"
+    }
+  ],
+  "other": [
+    {
+      "date": "Donenrstags 10-14 Uhr",
+      "description": "Donnerstags 10-14 Uhr",
+      "infolink": "https://www.uni-muenster.de/Nachhaltigkeit/brotzeitkolloquium.html"
+    },
+    {
+      "date": "Jeden letzten Freitag im Monat",
+      "description": "Offene Gesprächsrunde zum Thema \"Studieren mit Autismus\"",
+      "infolink": null
+    }
+  ]
+}

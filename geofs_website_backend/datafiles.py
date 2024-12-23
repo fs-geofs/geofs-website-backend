@@ -22,6 +22,7 @@ class DatafileDict(TypedDict):
     gi_erstiwochenende: Datafile
     gi_stundenplan: Datafile
     geoloek_praesidienste: Datafile
+    geoloek_termine: Datafile
 
 
 class Otherfile(TypedDict):
@@ -88,6 +89,12 @@ DATAFILES: DatafileDict = {
         "data": "data/geoloek/praesidienste.json",
         "template": "data_templates/data/geoloek/praesidienste.json",
         "schema": "schemas/praesidienste.schema.json",
+        "schema_validator": None
+    },
+    "geoloek_termine": {
+        "data": "data/geoloek/termine.json",
+        "template": "data_templates/data/geoloek/termine.json",
+        "schema": "schemas/geoloek_termine.schema.json",
         "schema_validator": None
     }
 }

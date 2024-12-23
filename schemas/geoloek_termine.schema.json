@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "required": ["stand", "fstermine", "other"],
+  "additionalProperties": false,
+  "properties": {
+    "stand": {
+      "type": "string",
+      "format": "date"
+    },
+    "fstermine": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/termin"
+      }
+    },
+    "other": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/termin"
+      }
+    }
+  },
+  "$defs": {
+    "termin": {
+      "type": "object",
+      "required": ["date", "description", "infolink"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "infolink": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "urk"
+        }
+      }
+    }
+  }
+}
