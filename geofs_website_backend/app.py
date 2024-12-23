@@ -229,7 +229,4 @@ def geoloek_praesidienste():
 @app.route("/geoloek_termine")
 @handle_errors
 def geoloek_termine():
-    # with open(DATAFILES["geoloek_termine"]["data"]) as file:
-    #     data = json.load(file)
-    # utils.validate_dict_againt_schema(DATAFILES["geoloek_termine"]["schema_validator"], data)
     return get_json_data("geoloek_termine")
