@@ -1,10 +1,23 @@
-from typing import TypedDict
+from typing import TypedDict, Literal
 from jsonschema import Draft202012Validator
 
 
 ###############################################
 #  Classes for type hinting the dictionaries  #
 ###############################################
+
+DatafileKeys = Literal[
+    "gi_jahrgaenge",
+    "gi_praesidienste",
+    "gi_termine",
+    "gi_rollen",
+    "gi_erstiwoche",
+    "gi_erstiwochenende",
+    "gi_stundenplan",
+    "geoloek_praesidienste",
+    "geoloek_termine",
+]
+
 
 class Datafile(TypedDict):
     data: str

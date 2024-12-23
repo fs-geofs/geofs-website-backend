@@ -6,7 +6,7 @@ from . import utils
 from os.path import join
 from functools import wraps
 
-from .datafiles import DATAFILES, OTHER_FILES
+from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys
 
 from .errors import IntegrityError
 
@@ -72,6 +72,18 @@ def handle_errors(func):
     return wrapper_func
 
 
+def get_json_data(datafiles_key: DatafileKeys) -> dict:
+    """
+
+    :param datafiles_key: Key for the entry in the DATAFILES dictionary
+    :return:
+    """
+    with open(DATAFILES[datafiles_key]["data"]) as file:
+        data = json.load(file)
+    utils.validate_dict_againt_schema(DATAFILES[datafiles_key]["schema_validator"], data)
+    return data
+
+
 @app.route("/")
 def hello():
     return {"version": "1.0"}
@@ -85,64 +97,43 @@ def hello():
 @app.route('/erstiwoche')
 @handle_errors
 def erstiwoche():
-    with open(DATAFILES["gi_erstiwoche"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["gi_erstiwoche"]["schema_validator"], data)
-    return data
+    return get_json_data("gi_erstiwoche")
 
 
 @app.route("/erstiwochenende")
 @handle_errors
 def erstiwochenende():
-    with open(DATAFILES["gi_erstiwochenende"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["gi_erstiwochenende"]["schema_validator"], data)
-    return data
+    return get_json_data("gi_erstiwochenende")
 
 
 @app.route("/erstistundenplan")
 @handle_errors
 def stundenplan():
-    with open(DATAFILES["gi_stundenplan"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["gi_stundenplan"]["schema_validator"], data)
-    return data
+    return get_json_data("gi_stundenplan")
 
 
 @app.route("/fachschaft_rollen")
 @handle_errors
 def rollen():
-    with open(DATAFILES["gi_rollen"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["gi_rollen"]["schema_validator"], data)
-    return data
+    return get_json_data("gi_rollen")
 
 
 @app.route("/praesidienste")
 @handle_errors
 def praesidienste():
-    with open(DATAFILES["gi_praesidienste"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["gi_praesidienste"]["schema_validator"], data)
-    return data
+    return get_json_data("gi_praesidienste")
 
 
 @app.route("/termine")
 @handle_errors
 def termine():
-    with open(DATAFILES["gi_termine"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["gi_termine"]["schema_validator"], data)
-    return data
+    return get_json_data("gi_termine")
 
 
 @app.route("/jahrgaenge")
 @handle_errors
 def jahrgaenge():
-    with open(DATAFILES["gi_jahrgaenge"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["gi_jahrgaenge"]["schema_validator"], data)
-    return data
+    return get_json_data("gi_jahrgaenge")
 
 
 @app.route("/joblistings")
@@ -232,16 +223,13 @@ def foto_gi_fachschaft():
 @app.route("/geoloek_praesidienste")
 @handle_errors
 def geoloek_praesidienste():
-    with open(DATAFILES["geoloek_praesidienste"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["geoloek_praesidienste"]["schema_validator"], data)
-    return data
+    return get_json_data("geoloek_praesidienste")
 
 
 @app.route("/geoloek_termine")
 @handle_errors
 def geoloek_termine():
-    with open(DATAFILES["geoloek_termine"]["data"]) as file:
-        data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES["geoloek_termine"]["schema_validator"], data)
-    return data
+    # with open(DATAFILES["geoloek_termine"]["data"]) as file:
+    #     data = json.load(file)
+    # utils.validate_dict_againt_schema(DATAFILES["geoloek_termine"]["schema_validator"], data)
+    return get_json_data("geoloek_termine")
