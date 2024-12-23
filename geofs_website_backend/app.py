@@ -12,6 +12,10 @@ from .errors import IntegrityError
 
 import sys
 
+############################
+#  Perform startup checks  #
+############################
+
 
 try:
     utils.check_template_file_presence()  # Check if all data templates are there:
@@ -71,6 +75,11 @@ def handle_errors(func):
 @app.route("/")
 def hello():
     return {"version": "1.0"}
+
+
+########################
+#  Endpoints for FS-GI  #
+########################
 
 
 @app.route('/erstiwoche')
@@ -213,6 +222,11 @@ def foto_gi_fachschaft():
     response.headers["Content-Type"] = "image/jpeg"
     response.headers["Content-Disposition"] = "inline; filename=fachschaft.jpg"
     return response
+
+
+##############################
+#  Endpoints for FS-Geoloek  #
+##############################
 
 
 @app.route("/geoloek_praesidienste")
