@@ -16,6 +16,9 @@ DatafileKeys = Literal[
     "gi_stundenplan",
     "geoloek_praesidienste",
     "geoloek_termine",
+    "geoloek_erstiwoche_geo",
+    "geoloek_erstiwoche_loek",
+    "geoloek_erstiwoche_2fb"
 ]
 
 
@@ -36,6 +39,9 @@ class DatafileDict(TypedDict):
     gi_stundenplan: Datafile
     geoloek_praesidienste: Datafile
     geoloek_termine: Datafile
+    geoloek_erstiwoche_geo: Datafile
+    geoloek_erstiwoche_loek: Datafile
+    geoloek_erstiwoche_2fb: Datafile
 
 
 class Otherfile(TypedDict):
@@ -108,6 +114,24 @@ DATAFILES: DatafileDict = {
         "data": "data/geoloek/termine.json",
         "template": "data_templates/data/geoloek/termine.json",
         "schema": "schemas/geoloek_termine.schema.json",
+        "schema_validator": None
+    },
+    "geoloek_erstiwoche_geo": {
+        "data": "data/geoloek/erstiwoche_geo.json",
+        "template": "data_templates/data/geoloek/erstiwoche_geo.json",
+        "schema": "schemas/erstiwoche.schema.json",
+        "schema_validator": None
+    },
+    "geoloek_erstiwoche_loek": {
+        "data": "data/geoloek/erstiwoche_loek.json",
+        "template": "data_templates/data/geoloek/erstiwoche_loek.json",
+        "schema": "schemas/erstiwoche.schema.json",
+        "schema_validator": None
+    },
+    "geoloek_erstiwoche_2fb": {
+        "data": "data/geoloek/erstiwoche_2fb.json",
+        "template": "data_templates/data/geoloek/erstiwoche_2fb.json",
+        "schema": "schemas/erstiwoche.schema.json",
         "schema_validator": None
     }
 }

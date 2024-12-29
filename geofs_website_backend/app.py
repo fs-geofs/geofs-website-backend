@@ -230,3 +230,20 @@ def geoloek_praesidienste():
 @handle_errors
 def geoloek_termine():
     return get_json_data("geoloek_termine")
+
+@app.route("/geoloek_erstiwoche_geo")
+@handle_errors
+def geoloek_erstiwoche_geo():
+    return get_json_data("geoloek_erstiwoche_geo")
+
+
+@app.route("/geoloek_erstiwoche_loek")
+@handle_errors
+def geoloek_erstiwoche_loek():
+    return get_json_data("geoloek_erstiwoche_loek")
+
+
+@app.route("/geoloek_erstiwoche_2fb")
+@handle_errors
+def geoloek_erstiwoche_2fb():
+    return get_json_data("geoloek_erstiwoche_2fb")
