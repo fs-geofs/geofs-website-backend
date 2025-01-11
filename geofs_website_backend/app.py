@@ -84,9 +84,20 @@ def get_json_data(datafiles_key: DatafileKeys) -> dict:
     return data
 
 
+########################
+#  Endpoints for both  #
+########################
+
+
 @app.route("/")
 def hello():
     return {"version": "1.0"}
+
+
+@app.route("/gremien")
+@handle_errors
+def gremien():
+    return get_json_data("gremien")
 
 
 ########################

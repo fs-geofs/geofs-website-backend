@@ -1,0 +1,393 @@
+{
+  "fbr_gremien": {
+    "fbr": {
+      "ordentlich": [
+        {
+          "name": "Simon Köster",
+          "fs": "Geo"
+        },
+        {
+          "name": "Annemarie Sofie Greif",
+          "fs": "Geow"
+        },
+        {
+          "name": "Rumer Victoria Koppelle",
+          "fs": ""
+        }
+      ],
+      "stv": [
+        {
+          "name": "Sarah Ickerodt",
+          "fs": "Geo"
+        },
+        {
+          "name": "Andreas Rademaker",
+          "fs": "GI"
+        },
+        {
+          "name": "Moritz Tönnis",
+          "fs": ""
+        },
+        {
+          "name": "Malte Fernández Flaschka",
+          "fs": "Geo"
+        },
+        {
+          "name": "Alexander Nicolas Pilz",
+          "fs": "GI"
+        }
+      ]
+    },
+    "studienbeirat": {
+      "ordentlich": [
+        {
+          "name": "Mathias Wiggermann",
+          "fs": "Geow"
+        },
+        {
+          "name": "Humam Hikmat",
+          "fs": "GI"
+        },
+        {
+          "name": "Nelly Niehaus",
+          "fs": "Geow"
+        },
+        {
+          "name": "Sarah Ickerodt",
+          "fs": "Geo"
+        },
+        {
+          "name": "Robert Voß",
+          "fs": "Geo"
+        },
+        {
+          "name": "Jannis Bünger",
+          "fs": "Lök"
+        },
+        {
+          "name": "Lukas Räuschel",
+          "fs": "GI"
+        }
+      ],
+      "stv": [
+        {
+          "name": "Felix Meier",
+          "fs": "Geo"
+        },
+        {
+          "name": "Antonius Tschuschke",
+          "fs": "Geow"
+        },
+        {
+          "name": "Eduard Luz",
+          "fs": "Lök"
+        },
+        {
+          "name": "Anne Warnecke",
+          "fs": "MEd"
+        },
+        {
+          "name": "Severin Krohne",
+          "fs": "GI"
+        },
+        {
+          "name": "Florian Thiemann",
+          "fs": "GI"
+        },
+        {
+          "name": "Paul Typel",
+          "fs": "Geow"
+        }
+      ]
+    },
+    "haushalt": {
+      "ordentlich": [
+        {
+          "name": "Simon Köster",
+          "fs": "Geo"
+        }
+      ],
+      "stv": [
+        {
+          "name": "Jannis Bünger",
+          "fs": "Lök"
+        },
+        {
+          "name": "Paula Schockemöhle",
+          "fs": "ZFB"
+        },
+        {
+          "name": "Luis Waldeyer",
+          "fs": "GI"
+        },
+        {
+          "name": "Florian Thiemann",
+          "fs": "GI"
+        },
+        {
+          "name": "Maria Vetter",
+          "fs": "Geow"
+        }
+      ]
+    },
+    "struktur_planung_evaluation": {
+      "ordentlich": [
+        {
+          "name": "Emilia Reimann",
+          "fs": "Lök"
+        }
+      ],
+      "stv": [
+        {
+          "name": "Paul Typel",
+          "fs": "Geow"
+        },
+        {
+          "name": "Michael Brüggemann",
+          "fs": "GI"
+        }
+      ]
+    },
+    "forschung_nachwuchs": {
+      "ordentlich": [
+        {
+          "name": "Lukas Räuschel",
+          "fs": "GI"
+        },
+        {
+          "name": "Anne Hartung",
+          "fs": "ZFB"
+        }
+      ],
+      "stv": [
+        {
+          "name": "Antonius Tschuschke",
+          "fs": "Geow"
+        },
+        {
+          "name": "Janne Altehoefer",
+          "fs": "ZFB"
+        }
+      ]
+    },
+    "qv": {
+      "ordentlich": [
+        {
+          "name": "Felix Meier",
+          "fs": "Geo"
+        },
+        {
+          "name": "Andreas Rademaker",
+          "fs": "GI"
+        },
+        {
+          "name": "Jannis Bünger",
+          "fs": "Lök"
+        },
+        {
+          "name": "Nils Leuchten",
+          "fs": "ZFB"
+        },
+        {
+          "name": "Malin Bach",
+          "fs": "Geow"
+        },
+        {
+          "name": "Michael Brüggemann",
+          "fs": "GI"
+        },
+        {
+          "name": "Max Großklaus",
+          "fs": "Geow"
+        }
+      ],
+      "stv": [
+        {
+          "name": "Severin Krohne",
+          "fs": "GI"
+        },
+        {
+          "name": "Elias Conrad",
+          "fs": "ZFB"
+        },
+        {
+          "name": "Emil Erlenkötter",
+          "fs": "GI"
+        },
+        {
+          "name": "Florian Thiemann",
+          "fs": "GI"
+        },
+        {
+          "name": "Antonius Tschuschke",
+          "fs": "Geow"
+        },
+        {
+          "name": "Max Schildener",
+          "fs": "Geo"
+        }
+      ]
+    },
+    "gleichstellung": {
+      "ordentlich": [
+        {
+          "name": "Michael Brüggemann",
+          "fs": "GI"
+        },
+        {
+          "name": "Sarah Ickerodt",
+          "fs": "Geo"
+        }
+      ],
+      "stv": [
+        {
+          "name": "Maria Vetter",
+          "fs": "Geow"
+        }
+      ]
+    },
+    "promotion": {
+      "ordentlich": [
+        {
+          "name": "Jonas Hurst",
+          "fs": "GI"
+        }
+      ],
+      "stv": [
+        {
+          "name": "Felix Meier",
+          "fs": "Geo"
+        },
+        {
+          "name": "Alexander Pilz",
+          "fs": "GI"
+        },
+        {
+          "name": "Anne Warnecke",
+          "fs": "MEd"
+        },
+        {
+          "name": "Jannis Bünger",
+          "fs": "Lök"
+        }
+      ]
+    }
+  },
+  "pruefungsausschuesse": {
+    "bachelor_geo": {
+      "ordentlich": [
+        "Felix Meier"
+      ],
+      "stv": [
+        "Malte Fernández Flaschka"
+      ]
+    },
+    "master_humangeo": {
+      "ordentlich": [
+        "-"
+      ],
+      "stv": [
+        "-"
+      ]
+    },
+    "bachelor_geoinformatik": {
+      "ordentlich": [
+        "Andreas Rademaker"
+      ],
+      "stv": [
+        "Severin Krohne"
+      ]
+    },
+    "master_geoinformatics": {
+      "ordentlich": [
+        "Alexander Pilz"
+      ],
+      "stv": [
+        "Emil Erlenkötter"
+      ]
+    },
+    "master_geospatial_tech": {
+      "ordentlich": [
+        "Alexander Pilz"
+      ],
+      "stv": [
+        "Emil Erlenkötter"
+      ]
+    },
+    "bachelor_loek": {
+      "ordentlich": [
+        "Jannis Bünger"
+      ],
+      "stv": [
+        "Laura Gust"
+      ]
+    },
+    "master_loek": {
+      "ordentlich": [
+        "-"
+      ],
+      "stv": [
+        "-"
+      ]
+    },
+    "master_loek_auswahl": {
+      "ordentlich": [
+        "Eduard Luz"
+      ],
+      "stv": [
+        "Anne Götz"
+      ]
+    },
+    "master_wasserwiss": {
+      "ordentlich": [
+        "Max Walther"
+      ],
+      "stv": [
+        "Emilia Reimann"
+      ]
+    }
+  },
+  "institutsvorstaende": {
+    "landschaftsoekologie": {
+      "ordentlich": [
+        "Marius Fischer",
+        "Ben Biskop"
+      ],
+      "stv": [
+        "Simon Köster",
+        "Eduard Luz",
+        "Emilia Reimann"
+      ]
+    },
+    "geographie": {
+      "ordentlich": [
+        "Felix Meier"
+      ],
+      "stv": [
+        "Linda Lütkes",
+        "Ole Steen",
+        "Britt Wilbrand",
+        "Lukas Terhechte",
+        "Nina Kleen"
+      ]
+    },
+    "geoinformatik": {
+      "ordentlich": [
+        "Alexander Pilz"
+      ],
+      "stv": [
+        "Andreas Rademaker",
+        "Florian Thiemann"
+      ]
+    },
+    "didaktik_geographie": {
+      "ordentlich": [
+        "Anne Warnecke"
+      ],
+      "stv": [
+        "Elias Conrad",
+        "Max Walther"
+      ]
+    }
+  }
+}

@@ -7,6 +7,7 @@ from jsonschema import Draft202012Validator
 ###############################################
 
 DatafileKeys = Literal[
+    "gremien",
     "gi_jahrgaenge",
     "gi_praesidienste",
     "gi_termine",
@@ -31,6 +32,7 @@ class Datafile(TypedDict):
 
 
 class DatafileDict(TypedDict):
+    gremien: Datafile
     gi_jahrgaenge: Datafile
     gi_praesidienste: Datafile
     gi_termine: Datafile
@@ -64,6 +66,12 @@ class OtherfileDict(TypedDict):
 ######################
 
 DATAFILES: DatafileDict = {
+    "gremien": {
+        "data": "data/gremien.json",
+        "template": "data_templates/data/gremien.json",
+        "schema": "schemas/gremien.schema.json",
+        "schema_validator": None
+    },
     "gi_jahrgaenge": {
         "data": "data/gi/studium/jahrgaenge.json",
         "template": "data_templates/data/gi/studium/jahrgaenge.json",

@@ -1,0 +1,177 @@
+{
+  "type": "object",
+  "required": [
+    "fbr_gremien",
+    "pruefungsausschuesse",
+    "institutsvorstaende"
+  ],
+  "properties": {
+    "fbr_gremien": {
+      "type": "object",
+      "required": [
+        "fbr",
+        "studienbeirat",
+        "haushalt",
+        "struktur_planung_evaluation",
+        "forschung_nachwuchs",
+        "qv",
+        "gleichstellung",
+        "promotion"
+      ],
+      "properties": {
+        "fbr": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        },
+        "studienbeirat": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        },
+        "haushalt": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        },
+        "struktur_planung_evaluation": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        },
+        "forschung_nachwuchs": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        },
+        "qv": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        },
+        "gleichstellung": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        },
+        "promotion": {
+          "$ref": "#/$defs/fbr_gremium_mitglieder"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pruefungsausschuesse": {
+      "type": "object",
+      "required": [
+        "bachelor_geo",
+        "master_humangeo",
+        "bachelor_geoinformatik",
+        "master_geoinformatics",
+        "master_geospatial_tech",
+        "master_loek",
+        "master_loek_auswahl",
+        "master_wasserwiss"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "bachelor_geo": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "master_humangeo": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "bachelor_geoinformatik": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "master_geoinformatics": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "master_geospatial_tech": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "bachelor_loek": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "master_loek": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "master_loek_auswahl": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "master_wasserwiss": {
+          "$ref": "#/$defs/mitglieder"
+        }
+      }
+    },
+    "institutsvorstaende": {
+      "type": "object",
+      "required": [
+        "landschaftsoekologie",
+        "geographie",
+        "geoinformatik",
+        "didaktik_geographie"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "landschaftsoekologie": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "geographie": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "geoinformatik": {
+          "$ref": "#/$defs/mitglieder"
+        },
+        "didaktik_geographie": {
+          "$ref": "#/$defs/mitglieder"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "fbr_gremium_mitglieder": {
+      "type": "object",
+      "required": [
+        "ordentlich",
+        "stv"
+      ],
+      "properties": {
+        "ordentlich": {
+          "$ref": "#/$defs/detailled_name_list"
+        },
+        "stv": {
+          "$ref": "#/$defs/detailled_name_list"
+        }
+      },
+      "additionalProperties": false
+    },
+    "detailled_name_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "fs"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "fs": {
+            "type": "string",
+            "enum": ["GI", "Geow", "Geo", "Lök", "ZFB", "MEd", ""]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "mitglieder": {
+      "type": "object",
+      "requried": [
+        "ordentlich",
+        "stv"
+      ],
+      "properties": {
+        "ordentlich": {
+          "$ref": "#/$defs/name_list"
+        },
+        "stv": {
+          "$ref": "#/$defs/name_list"
+        },
+        "additionalProperties": false
+      }
+    },
+    "name_list": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
