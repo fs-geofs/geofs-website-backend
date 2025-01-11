@@ -350,13 +350,13 @@
   "institutsvorstaende": {
     "landschaftsoekologie": {
       "ordentlich": [
-        "Marius Fischer",
-        "Ben Biskop"
+        "Emilia Reimann",
+        "Jannis brünger"
       ],
       "stv": [
+        "Ben Biskop",
         "Simon Köster",
-        "Eduard Luz",
-        "Emilia Reimann"
+        "Eduard Luz"
       ]
     },
     "geographie": {
@@ -364,11 +364,7 @@
         "Felix Meier"
       ],
       "stv": [
-        "Linda Lütkes",
-        "Ole Steen",
-        "Britt Wilbrand",
-        "Lukas Terhechte",
-        "Nina Kleen"
+        "Sarah Ickerodt"
       ]
     },
     "geoinformatik": {
