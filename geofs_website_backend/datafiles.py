@@ -18,7 +18,8 @@ DatafileKeys = Literal[
     "geoloek_termine",
     "geoloek_erstiwoche_geo",
     "geoloek_erstiwoche_loek",
-    "geoloek_erstiwoche_2fb"
+    "geoloek_erstiwoche_2fb",
+    "geoloek_organisation"
 ]
 
 
@@ -42,6 +43,7 @@ class DatafileDict(TypedDict):
     geoloek_erstiwoche_geo: Datafile
     geoloek_erstiwoche_loek: Datafile
     geoloek_erstiwoche_2fb: Datafile
+    geoloek_organisation: Datafile
 
 
 class Otherfile(TypedDict):
@@ -132,6 +134,12 @@ DATAFILES: DatafileDict = {
         "data": "data/geoloek/erstiwoche_2fb.json",
         "template": "data_templates/data/geoloek/erstiwoche_2fb.json",
         "schema": "schemas/erstiwoche.schema.json",
+        "schema_validator": None
+    },
+    "geoloek_organisation": {
+        "data": "data/geoloek/organisation.json",
+        "template": "data_templates/data/geoloek/organisation.json",
+        "schema": "schemas/organisation.schema.json",
         "schema_validator": None
     }
 }

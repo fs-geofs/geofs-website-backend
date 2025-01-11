@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "required": ["vorstand", "minister", "andere_minister"],
+  "properties": {
+    "vorstand": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "name"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "minister": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ministerium_details"
+      }
+    },
+    "andere_minister": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ministerium_details"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ministerium_details": {
+      "type": "object",
+      "required": ["title", "name1", "name2"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "name1": {
+          "type": "string"
+        },
+        "name2": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

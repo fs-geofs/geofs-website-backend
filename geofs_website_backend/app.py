@@ -247,3 +247,8 @@ def geoloek_erstiwoche_loek():
 @handle_errors
 def geoloek_erstiwoche_2fb():
     return get_json_data("geoloek_erstiwoche_2fb")
+
+@app.route("/geoloek_organisation")
+@handle_errors
+def geoloek_organisation():
+    return get_json_data("geoloek_organisation")

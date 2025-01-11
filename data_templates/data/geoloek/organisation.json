@@ -1,0 +1,123 @@
+{
+  "vorstand": [
+    {
+      "title": "1. Vorsitzender",
+      "name": "Elias Conrad",
+      "studiengang": "asdf"
+    },
+    {
+      "title": "2. Vorsitzende",
+      "name": "Anne Hartung",
+      "studiengang": "M.Sc. Landschaftsökologie"
+    },
+    {
+      "title": "3. Vorsitzender",
+      "name": "Eduard Lutz",
+      "studiengang": "M.Sc. Landschaftsökologie"
+    },
+    {
+      "title": "Finanzreferentin",
+      "name": "Emilia Reimann",
+      "studiengang": "M.Sc. Landschaftsökologie"
+    },
+    {
+      "title": "Stv. Finanzreferentin",
+      "name": "Sarah Ickerodt",
+      "studiengang": "M.Sc. Landschaftsökologie"
+    }
+  ],
+  "minister": [
+    {
+      "title": "Awareness-Ministerium",
+      "name1": "Amelie Jacobi",
+      "name2": "Janne Katharina Altehoefer"
+    },
+    {
+      "title": "Ersti-Ministerium",
+      "name1": "Elias conrad",
+      "name2": "Maximilian Schildener"
+    },
+    {
+      "title": "FS-Vernetzungsministerium",
+      "name1": "Paula Schockemöhle",
+      "name2": "Christian Spinnrath"
+    },
+    {
+      "title": "Event-Ministerium",
+      "name1": "Alina Finja Henkenius",
+      "name2": "Christian Spinnrath"
+    },
+    {
+      "title": "Geoparty-Ministerium",
+      "name1": "Robert Voß",
+      "name2": "Alina Finja Henkenius"
+    },
+    {
+      "title": "Getränke-Ministerium",
+      "name1": "Jannis Bünger",
+      "name2": "Laura Gust"
+    },
+    {
+      "title": "Ministerium Für Öffentlichkeitsarbeit",
+      "name1": "Max Walther",
+      "name2": "Maj-Britt Wilbrand"
+    },
+    {
+      "title": "Ministerium für Schlüssel und Verteilerlisten",
+      "name1": "Simon Köster",
+      "name2": "Maximilan Schildener"
+    },
+    {
+      "title": "Verwaltungs-Ministerium",
+      "name1": "Elias Conrad",
+      "name2": "Anne Hartung"
+    },
+    {
+      "title": "Sommerfest-Ministerium",
+      "name1": "Max Walther",
+      "name2": "Anne Hartung"
+    },
+    {
+      "title": "Weihnachts-Minsterium",
+      "name1": "Robert Voß",
+      "name2": "Loreen Hoffmann"
+    },
+    {
+      "title": "Finanz-Ministerium",
+      "name1": "Emilia Reimann",
+      "name2": "Sarah Ickerodt"
+    },
+    {
+      "title": "Nachhaltigkeits-Ministerium",
+      "name1": "Julia Jebbink",
+      "name2": "Anne Warnecke"
+    },
+    {
+      "title": "Geography-Awareness-Week-Ministerium",
+      "name1": "Lukas Terhechte",
+      "name2": "Tim Schaffert"
+    }
+  ],
+  "andere_minister": [
+    {
+      "title": "Globi-Ministerium",
+      "name1": "Amelie Jacobi",
+      "name2": "Malte Fernández Flaschka"
+    },
+    {
+      "title": "Ministerium für mehr Liebe",
+      "name1": "Anne Hartung",
+      "name2": "Paula Schockemöhle, Sarah Ickerodt"
+    },
+    {
+      "title": "Pflanzen-Ministerium",
+      "name1": "Simon Köster",
+      "name2": "Rayvon Apraku"
+    },
+    {
+      "title": "Ordnungs-Ministerium",
+      "name1": "Anne Warnecke",
+      "name2": "Max Walther, Jannis Bünger"
+    }
+  ]
+}
