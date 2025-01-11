@@ -54,20 +54,20 @@ def handle_errors(func):
     def wrapper_func(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except json.JSONDecodeError as e:
+        except json.JSONDecodeError as err:
             print("File is not a valid JSON file")
-            print(e)
+            print(err)
             return {"error": "File is not a valid json file"}, 500
-        except ValidationError as e:
+        except ValidationError as err:
             print("JSON file does not conform to its associated JSON-Schema")
-            print(e)
+            print(err)
             return {"error": "File does not validate against its schema"}, 500
-        except FileNotFoundError as e:
+        except FileNotFoundError as err:
             print("Could not find specified file")
-            print(e)
+            print(err)
             return {"error": "Could not locate a specific file. See console output for details"}, 500
-        except Exception as e:
-            print(e)
+        except Exception as err:
+            print(err)
             return {"error": "An internal server error has occured."}, 500
     return wrapper_func
 
@@ -241,6 +241,7 @@ def geoloek_praesidienste():
 @handle_errors
 def geoloek_termine():
     return get_json_data("geoloek_termine")
+
 
 @app.route("/geoloek_erstiwoche_geo")
 @handle_errors
