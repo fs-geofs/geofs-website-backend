@@ -1,10 +1,11 @@
 from typing import TypedDict, Literal
 from jsonschema import Draft202012Validator
 
-###############################################
-#  Classes for type hinting the dictionaries  #
-###############################################
+#############################################
+#  Stuff for type hinting the dictionaries  #
+#############################################
 
+# defines the names of the keys present in the DATAFILES dictionary (for type hinting)
 DatafileKeys = Literal[
     "gremien",
     "gi_jahrgaenge",
@@ -22,7 +23,7 @@ DatafileKeys = Literal[
     "geoloek_organisation"
 ]
 
-
+# defines the names of the keys present in the OTHERFILES dictionary (for type hinting)
 OtherfilesKeys = Literal[
     "foto_gi",
     "news_template",
@@ -33,6 +34,7 @@ OtherfilesKeys = Literal[
 ]
 
 
+# defines the values in the DATAFILES dictionary (for type hinting)
 class Datafile(TypedDict):
     data: str
     template: str
@@ -40,35 +42,15 @@ class Datafile(TypedDict):
     schema_validator: Draft202012Validator | None
 
 
-class DatafileDict(TypedDict):
-    gremien: Datafile
-    gi_jahrgaenge: Datafile
-    gi_praesidienste: Datafile
-    gi_termine: Datafile
-    gi_rollen: Datafile
-    gi_erstiwoche: Datafile
-    gi_erstiwochenende: Datafile
-    gi_stundenplan: Datafile
-    geoloek_praesidienste: Datafile
-    geoloek_termine: Datafile
-    geoloek_erstiwoche_geo: Datafile
-    geoloek_erstiwoche_loek: Datafile
-    geoloek_erstiwoche_2fb: Datafile
-    geoloek_organisation: Datafile
-
-
+# defines the values in the OTHERFILES dictionary (for type hinting)
 class Otherfile(TypedDict):
     data: str
     template: str
 
 
-class OtherfileDict(TypedDict):
-    foto_gi: Otherfile
-    news_template: Otherfile
-    news_readme: Otherfile
-    jobs_template: Otherfile
-    jobs_readme: Otherfile
-    foto_geoloek: Otherfile
+# defines the Keys and Values inside the DATAFILES and OTHERFILES dicts (for type hinting
+DatafileDict = dict[DatafileKeys, Datafile]
+OtherfileDict = dict[OtherfilesKeys, Otherfile]
 
 
 ######################
