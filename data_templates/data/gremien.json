@@ -4,7 +4,7 @@
       "ordentlich": [
         {
           "name": "Simon Köster",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Annemarie Sofie Greif",
@@ -18,7 +18,7 @@
       "stv": [
         {
           "name": "Sarah Ickerodt",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Andreas Rademaker",
@@ -30,7 +30,7 @@
         },
         {
           "name": "Malte Fernández Flaschka",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Alexander Nicolas Pilz",
@@ -54,15 +54,15 @@
         },
         {
           "name": "Sarah Ickerodt",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Robert Voß",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Jannis Bünger",
-          "fs": "Lök"
+          "fs": "GeoLoek"
         },
         {
           "name": "Lukas Räuschel",
@@ -72,7 +72,7 @@
       "stv": [
         {
           "name": "Felix Meier",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Antonius Tschuschke",
@@ -80,11 +80,11 @@
         },
         {
           "name": "Eduard Luz",
-          "fs": "Lök"
+          "fs": "GeoLoek"
         },
         {
           "name": "Anne Warnecke",
-          "fs": "MEd"
+          "fs": "GeoLoek"
         },
         {
           "name": "Severin Krohne",
@@ -104,17 +104,17 @@
       "ordentlich": [
         {
           "name": "Simon Köster",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         }
       ],
       "stv": [
         {
           "name": "Jannis Bünger",
-          "fs": "Lök"
+          "fs": "GeoLoek"
         },
         {
           "name": "Paula Schockemöhle",
-          "fs": "ZFB"
+          "fs": "GeoLoek"
         },
         {
           "name": "Luis Waldeyer",
@@ -134,7 +134,7 @@
       "ordentlich": [
         {
           "name": "Emilia Reimann",
-          "fs": "Lök"
+          "fs": "GeoLoek"
         }
       ],
       "stv": [
@@ -156,7 +156,7 @@
         },
         {
           "name": "Anne Hartung",
-          "fs": "ZFB"
+          "fs": "GeoLoek"
         }
       ],
       "stv": [
@@ -166,7 +166,7 @@
         },
         {
           "name": "Janne Altehoefer",
-          "fs": "ZFB"
+          "fs": "GeoLoek"
         }
       ]
     },
@@ -174,7 +174,7 @@
       "ordentlich": [
         {
           "name": "Felix Meier",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Andreas Rademaker",
@@ -182,11 +182,11 @@
         },
         {
           "name": "Jannis Bünger",
-          "fs": "Lök"
+          "fs": "GeoLoek"
         },
         {
           "name": "Nils Leuchten",
-          "fs": "ZFB"
+          "fs": "GeoLoek"
         },
         {
           "name": "Malin Bach",
@@ -208,7 +208,7 @@
         },
         {
           "name": "Elias Conrad",
-          "fs": "ZFB"
+          "fs": "GeoLoek"
         },
         {
           "name": "Emil Erlenkötter",
@@ -224,7 +224,7 @@
         },
         {
           "name": "Max Schildener",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         }
       ]
     },
@@ -236,7 +236,7 @@
         },
         {
           "name": "Sarah Ickerodt",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         }
       ],
       "stv": [
@@ -256,7 +256,7 @@
       "stv": [
         {
           "name": "Felix Meier",
-          "fs": "Geo"
+          "fs": "GeoLoek"
         },
         {
           "name": "Alexander Pilz",
@@ -264,11 +264,11 @@
         },
         {
           "name": "Anne Warnecke",
-          "fs": "MEd"
+          "fs": "GeoLoek"
         },
         {
           "name": "Jannis Bünger",
-          "fs": "Lök"
+          "fs": "GeoLoek"
         }
       ]
     }
