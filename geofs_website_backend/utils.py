@@ -116,7 +116,9 @@ def create_data_folder_structure():
         "data/gi/news",
         "data/gi/start",
         "data/gi/studium",
-        "data/geoloek"
+        "data/geoloek",
+        "data/geoloek/news",
+        "data/geoloek/jobs"
     ]
 
     for path in required_directories_paths:

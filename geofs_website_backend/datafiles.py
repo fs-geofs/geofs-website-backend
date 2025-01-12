@@ -26,11 +26,15 @@ DatafileKeys = Literal[
 # defines the names of the keys present in the OTHERFILES dictionary (for type hinting)
 OtherfilesKeys = Literal[
     "foto_gi",
-    "news_template",
-    "news_readme",
-    "jobs_template",
-    "jobs_readme",
-    "foto_geoloek"
+    "gi_news_template",
+    "gi_news_readme",
+    "gi_jobs_template",
+    "gi_jobs_readme",
+    "foto_geoloek",
+    "geoloek_news_template",
+    "geoloek_news_readme",
+    "geoloek_jobs_template",
+    "geoloek_jobs_readme",
 ]
 
 
@@ -149,24 +153,40 @@ OTHER_FILES: OtherfileDict = {
         "data": "data/gi/fachschaft.jpg",
         "template": "data_templates/data/gi/fachschaft.jpg"
     },
-    "news_template": {
+    "gi_news_template": {
         "data": "data/gi/news/2020-12-31_welcome.html",
         "template": "data_templates/data/gi/news/2020-12-31_welcome.html"
     },
-    "news_readme": {
+    "gi_news_readme": {
         "data": "data/gi/news/readme.txt",
         "template": "data_templates/data/gi/news/readme.txt"
     },
-    "jobs_template": {
+    "gi_jobs_template": {
         "data": "data/gi/jobs/2024-12-31_ifgi.html",
         "template": "data_templates/data/gi/jobs/2024-12-31_ifgi.html"
     },
-    "jobs_readme": {
+    "gi_jobs_readme": {
         "data": "data/gi/jobs/readme.txt",
         "template": "data_templates/data/gi/jobs/readme.txt"
     },
     "foto_geoloek": {
         "data": "data/geoloek/fachschaft.jpg",
         "template": "data_templates/data/geoloek/fachschaft.jpg"
-    }
+    },
+    "geoloek_news_template": {
+        "data": "data/geoloek/news/2020-12-31_welcome.html",
+        "template": "data_templates/data/geoloek/news/2020-12-31_welcome.html"
+    },
+    "geoloek_news_readme": {
+        "data": "data/geoloek/news/readme.txt",
+        "template": "data_templates/data/geoloek/news/readme.txt"
+    },
+    "geoloek_jobs_template": {
+        "data": "data/geoloek/jobs/2024-12-31_institute.html",
+        "template": "data_templates/data/geoloek/jobs/2024-12-31_institute.html"
+    },
+    "geoloek_jobs_readme": {
+        "data": "data/geoloek/jobs/readme.txt",
+        "template": "data_templates/data/geoloek/jobs/readme.txt"
+    },
 }

@@ -282,3 +282,25 @@ def geoloek_organisation():
 @handle_errors
 def foto_geoloek():
     return make_photo_response("foto_geoloek")
+
+
+@app.route("/geoloek_news")
+@handle_errors
+def geoloek_news():
+    # This URL has support for a query param called page (/geoloek_news?page=2)
+    # This param must be an integer >= 0
+    # Reason: If the website grows and we have more and more news articles, it will eventually become slow
+    # if all articles had to be opened and sent to the frontend
+    # Therefore, only the first 5 latest articles are read by default (page=0),
+    # the next 5 articles can be read on page 1, and so on...
+
+    path = "data/geoloek/news"
+    page = request.args.get("page")
+    return make_news_response(path, page)
+
+
+@app.route("/geoloek_joblistings")
+@handle_errors
+def geoloek_jobs():
+    path = "data/geoloek/jobs"
+    return make_jobs_response(path)
