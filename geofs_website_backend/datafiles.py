@@ -1,7 +1,6 @@
 from typing import TypedDict, Literal
 from jsonschema import Draft202012Validator
 
-
 ###############################################
 #  Classes for type hinting the dictionaries  #
 ###############################################
@@ -21,6 +20,16 @@ DatafileKeys = Literal[
     "geoloek_erstiwoche_loek",
     "geoloek_erstiwoche_2fb",
     "geoloek_organisation"
+]
+
+
+OtherfilesKeys = Literal[
+    "foto_gi",
+    "news_template",
+    "news_readme",
+    "jobs_template",
+    "jobs_readme",
+    "foto_geoloek"
 ]
 
 
@@ -59,6 +68,7 @@ class OtherfileDict(TypedDict):
     news_readme: Otherfile
     jobs_template: Otherfile
     jobs_readme: Otherfile
+    foto_geoloek: Otherfile
 
 
 ######################
@@ -172,5 +182,9 @@ OTHER_FILES: OtherfileDict = {
     "jobs_readme": {
         "data": "data/gi/jobs/readme.txt",
         "template": "data_templates/data/gi/jobs/readme.txt"
+    },
+    "foto_geoloek": {
+        "data": "data/geoloek/fachschaft.jpg",
+        "template": "data_templates/data/geoloek/fachschaft.jpg"
     }
 }

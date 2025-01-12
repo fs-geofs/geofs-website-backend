@@ -1,4 +1,4 @@
-from flask import Flask, make_response, request
+from flask import Flask, make_response, request, Response
 import json
 
 from jsonschema.exceptions import ValidationError
@@ -6,7 +6,7 @@ from . import utils
 from os.path import join
 from functools import wraps
 
-from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys
+from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
 
 from .errors import IntegrityError
 
@@ -74,7 +74,7 @@ def handle_errors(func):
 
 def get_json_data(datafiles_key: DatafileKeys) -> dict:
     """
-
+    Check a JSON file against its JSON-Schema, then send it as as a response
     :param datafiles_key: Key for the entry in the DATAFILES dictionary
     :return:
     """
@@ -82,6 +82,15 @@ def get_json_data(datafiles_key: DatafileKeys) -> dict:
         data = json.load(file)
     utils.validate_dict_againt_schema(DATAFILES[datafiles_key]["schema_validator"], data)
     return data
+
+
+def make_photo_response(otherfiles_key: OtherfilesKeys) -> Response:
+    with open(OTHER_FILES[otherfiles_key]["data"], "rb") as file:
+        data = file.read()
+    response = make_response(data)
+    response.headers["Content-Type"] = "image/jpeg"
+    response.headers["Content-Disposition"] = "inline; filename=fachschaft.jpg"
+    return response
 
 
 ########################
@@ -218,12 +227,7 @@ def news():
 @app.route("/foto_gi")
 @handle_errors
 def foto_gi_fachschaft():
-    with open(OTHER_FILES["foto_gi"]["data"], "rb") as file:
-        data = file.read()
-    response = make_response(data)
-    response.headers["Content-Type"] = "image/jpeg"
-    response.headers["Content-Disposition"] = "inline; filename=fachschaft.jpg"
-    return response
+    return make_photo_response("foto_gi")
 
 
 ##############################
@@ -265,3 +269,9 @@ def geoloek_erstiwoche_2fb():
 @handle_errors
 def geoloek_organisation():
     return get_json_data("geoloek_organisation")
+
+
+@app.route("/foto_geoloek")
+@handle_errors
+def foto_geoloek():
+    return make_photo_response("foto_geoloek")
