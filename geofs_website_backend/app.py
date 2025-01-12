@@ -93,6 +93,58 @@ def make_photo_response(otherfiles_key: OtherfilesKeys) -> Response:
     return response
 
 
+def make_news_response(path: str, page: str) -> dict:
+    filenames = utils.get_html_filenames_in_directory(path)
+    items_per_page = 5
+
+    # set page parameter in case it was not given in URL
+    if page is None:
+        page = 0
+
+    # cast page to integer
+    try:
+        page = int(page)
+    except ValueError:
+        page = 0
+
+    # ignore negative page numbers
+    if page < 0:
+        page = 0
+
+    if page * items_per_page >= len(filenames):
+        page = 0
+
+    start_index = page * items_per_page
+    end_index = start_index + items_per_page
+
+    response = {
+        "next": page + 1 if (page + 1) * items_per_page < len(filenames) else None,
+        "prev": page - 1 if page != 0 else None
+    }
+    data = []
+    for filename in filenames[start_index:end_index]:
+        with open(join(path, filename)) as file:
+            filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
+        data.append({
+            "id": filename,
+            "date": filename.split("_")[0],
+            "content": filecontent
+        })
+    response["news"] = data
+    return response
+
+
+def make_jobs_response(path: str) -> list:
+    filenames = utils.get_html_filenames_in_directory(path)
+
+    data = []
+    for filename in filenames:
+        with open(join(path, filename)) as file:
+            filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
+        data.append({"id": filename, "content": filecontent})
+    return data
+
+
 ########################
 #  Endpoints for both  #
 ########################
@@ -161,14 +213,7 @@ def jahrgaenge():
 def jobs():
 
     path = "data/gi/jobs"
-    filenames = utils.get_html_filenames_in_directory(path)
-
-    data = []
-    for filename in filenames:
-        with open(join(path, filename)) as file:
-            filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
-        data.append({"id": filename, "content": filecontent})
-    return data
+    return make_jobs_response(path)
 
 
 @app.route("/news")
@@ -182,46 +227,8 @@ def news():
     # the next 5 articles can be read on page 1, and so on...
 
     path = "data/gi/news"
-    filenames = utils.get_html_filenames_in_directory(path)
-
     page = request.args.get("page")
-    items_per_page = 5
-
-    # set page parameter in case it was not given in URL
-    if page is None:
-        page = 0
-
-    # cast page to integer
-    try:
-        page = int(page)
-    except ValueError:
-        page = 0
-
-    # ignore negative page numbers
-    if page < 0:
-        page = 0
-
-    if page*items_per_page >= len(filenames):
-        page = 0
-
-    start_index = page*items_per_page
-    end_index = start_index + items_per_page
-
-    response = {
-        "next": page+1 if (page+1)*items_per_page < len(filenames) else None,
-        "prev": page-1 if page != 0 else None
-    }
-    data = []
-    for filename in filenames[start_index:end_index]:
-        with open(join(path, filename)) as file:
-            filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
-        data.append({
-            "id": filename,
-            "date": filename.split("_")[0],
-            "content": filecontent
-        })
-    response["news"] = data
-    return response
+    return make_news_response(path, page)
 
 
 @app.route("/foto_gi")
