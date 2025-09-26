@@ -152,7 +152,7 @@ def make_jobs_response(path: str) -> list:
 #######################
 
 # webhook for geofs-website-content to fetch updates to website content from github
-app.route("/webhook/update-website-content")(github_webhook)
+app.route("/webhook/update-website-content", methods=["GET", "POST"])(github_webhook)
 
 
 ########################
