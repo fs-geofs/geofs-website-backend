@@ -10,6 +10,8 @@ from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
 
 from .errors import IntegrityError
 
+from .webhook import github_webhook
+
 import sys
 
 ############################
@@ -143,6 +145,14 @@ def make_jobs_response(path: str) -> list:
             filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
         data.append({"id": filename, "content": filecontent})
     return data
+
+
+#######################
+#  Special endpoints  #
+#######################
+
+# webhook for geofs-website-content to fetch updates to website content from github
+app.route("/webhook/update-website-content")(github_webhook)
 
 
 ########################
