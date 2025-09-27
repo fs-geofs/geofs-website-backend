@@ -2,7 +2,7 @@ from flask import Flask, make_response, request, Response
 import json
 
 from jsonschema.exceptions import ValidationError
-from . import utils
+from . import utils, git_utils
 from os.path import join
 from functools import wraps
 
@@ -25,7 +25,11 @@ try:
     utils.check_template_file_presence()  # Check if all data templates are there:
     utils.check_schema_file_presence()  # check if all schema files are there:
     utils.check_all_schema_file_validity()  # check if all schema files are valid jsonschema-2020-12 schemas
-    utils.create_data_folder_structure()  # Check if the data folder structure exists; If not, create it
+    if GIT_CONTENT_REPO is None:
+        utils.create_data_folder_structure()  # Check if the data folder structure exists; If not, create it
+    else:
+        git_utils.clone_folder_structure()  # check if git repo is not cloned yet, and clone it
+        git_utils.pull_updates()  # pull lates updates from repo
     utils.check_all_data_files_against_schema()  # check if all data files conform to their schema
 except IntegrityError as e:
     print("Startup Checks for backend server failed.")
