@@ -6,6 +6,7 @@ ENV PYTHONUNBUFFERED=1
 
 RUN apk update
 RUN apk upgrade
+# todo: install git
 
 WORKDIR /app
 
