@@ -10,7 +10,9 @@ from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
 
 from .errors import IntegrityError
 
-from .webhook import github_webhook
+from .webhook import github_webhook, webhook_disabled
+
+from .envs import GIT_CONTENT_REPO
 
 import sys
 
@@ -152,7 +154,10 @@ def make_jobs_response(path: str) -> list:
 #######################
 
 # webhook for geofs-website-content to fetch updates to website content from github
-app.route("/webhook/update-website-content", methods=["GET", "POST"])(github_webhook)
+if GIT_CONTENT_REPO is not None:
+    app.route("/webhook/update-website-content", methods=["POST"])(github_webhook)
+else:
+    app.route("/webhook/update-website-content", methods=["POST"])(webhook_disabled)
 
 
 ########################
