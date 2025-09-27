@@ -8,4 +8,6 @@ GITHUB_WEBHOOK_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", None)
 # Git repository where the content files (datafiles) are hosted.
 # Not required, but makes backups and editing easier.
 # Required if github webhook should be used to update website content
+# All required datafiles must exist in repo, otherwise backend will not start
+# Use in the following way: orga/repo, i.e. fs-geofs/geofs-website-content
 GIT_CONTENT_REPO = os.environ.get("GIT_CONTENT_REPO", None)
