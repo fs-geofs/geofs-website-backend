@@ -8,7 +8,7 @@ from functools import wraps
 
 from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
 
-from .errors import IntegrityError
+from .errors import IntegrityError, EnvVariableError
 
 from .webhook import github_webhook, webhook_disabled
 
@@ -33,6 +33,14 @@ try:
     utils.check_all_data_files_against_schema()  # check if all data files conform to their schema
 except IntegrityError as e:
     print("Startup Checks for backend server failed.")
+    print(e)
+
+    # DO NOT CHANGE EXIT CODE 4!!!!!!
+    # Code 4 is required to take effect in gunicorn deployment
+    # Gunicorn is used inside Docker build
+    sys.exit(4)
+except EnvVariableError as e:
+    print("Startup Checks for backend server failed. Invalid Environment variable.")
     print(e)
 
     # DO NOT CHANGE EXIT CODE 4!!!!!!
