@@ -3,14 +3,17 @@ import json
 
 from jsonschema.exceptions import ValidationError
 from . import utils
+from . import git_utils
 from os.path import join
 from functools import wraps
 
 from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
 
-from .errors import IntegrityError
+from .errors import IntegrityError, EnvVariableError, GitError
 
-from .webhook import github_webhook
+from .webhook import github_webhook, webhook_disabled
+
+from .envs import GITHUB_CONTENT_REPO, CONTENT_PATH
 
 import sys
 
@@ -18,29 +21,44 @@ import sys
 #  Perform startup checks  #
 ############################
 
+def shutdown_on_error():
+    # DO NOT CHANGE EXIT CODE 4!!!!!!
+    # Code 4 is required to take effect in gunicorn deployment
+    # Gunicorn is used inside Docker build
+    sys.exit(4)
+
 
 try:
     utils.check_template_file_presence()  # Check if all data templates are there:
     utils.check_schema_file_presence()  # check if all schema files are there:
     utils.check_all_schema_file_validity()  # check if all schema files are valid jsonschema-2020-12 schemas
-    utils.create_data_folder_structure()  # Check if the data folder structure exists; If not, create it
+    if GITHUB_CONTENT_REPO is None:
+        utils.create_data_folder_structure()  # Check if the data folder structure exists; If not, create it
+    else:
+        git_utils.clone_folder_structure()  # check if git repo is not cloned yet, and clone it
+        git_utils.pull_updates()  # pull lates updates from repo
+        git_utils.make_loacal_dummy_data_folder()
     utils.check_all_data_files_against_schema()  # check if all data files conform to their schema
 except IntegrityError as e:
-    print("Startup Checks for backend server failed.")
+    print("Startup Checks for backend server failed. Data file does not follow schema ")
     print(e)
-
-    # DO NOT CHANGE EXIT CODE 4!!!!!!
-    # Code 4 is required to take effect in gunicorn deployment
-    # Gunicorn is used inside Docker build
-    sys.exit(4)
+    shutdown_on_error()
+except EnvVariableError as e:
+    print("Startup Checks for backend server failed: Invalid Environment variable.")
+    print(e)
+    shutdown_on_error()
+except GitError as e:
+    print("Startup checks for backend server failed: Issues with git.")
+    print(e)
+    shutdown_on_error()
+except FileNotFoundError as e:
+    print("Startup checks for backend server failed: Required data file was not found")
+    print(e)
+    shutdown_on_error()
 except Exception as e:
     print("Startup Checks for backend server failed. An unforseen error occured:")
     print(e)
-
-    # DO NOT CHANGE EXIT CODE 4!!!!!!
-    # Code 4 is required to take effect in gunicorn deployment
-    # Gunicorn is used inside Docker build
-    sys.exit(4)
+    shutdown_on_error()
 
 
 app = Flask(__name__)
@@ -152,7 +170,10 @@ def make_jobs_response(path: str) -> list:
 #######################
 
 # webhook for geofs-website-content to fetch updates to website content from github
-app.route("/webhook/update-website-content", methods=["GET", "POST"])(github_webhook)
+if GITHUB_CONTENT_REPO is not None:
+    app.route("/webhook/update-website-content", methods=["POST"])(github_webhook)
+else:
+    app.route("/webhook/update-website-content", methods=["POST"])(webhook_disabled)
 
 
 ########################
@@ -222,7 +243,7 @@ def jahrgaenge():
 @handle_errors
 def jobs():
 
-    path = "data/gi/jobs"
+    path = f"{CONTENT_PATH}/gi/jobs"
     return make_jobs_response(path)
 
 
@@ -236,7 +257,7 @@ def news():
     # Therefore, only the first 5 latest articles are read by default (page=0),
     # the next 5 articles can be read on page 1, and so on...
 
-    path = "data/gi/news"
+    path = f"{CONTENT_PATH}/gi/news"
     page = request.args.get("page")
     return make_news_response(path, page)
 
@@ -304,7 +325,7 @@ def geoloek_news():
     # Therefore, only the first 5 latest articles are read by default (page=0),
     # the next 5 articles can be read on page 1, and so on...
 
-    path = "data/geoloek/news"
+    path = f"{CONTENT_PATH}/geoloek/news"
     page = request.args.get("page")
     return make_news_response(path, page)
 
@@ -312,5 +333,5 @@ def geoloek_news():
 @app.route("/geoloek_joblistings")
 @handle_errors
 def geoloek_jobs():
-    path = "data/geoloek/jobs"
+    path = f"{CONTENT_PATH}/geoloek/jobs"
     return make_jobs_response(path)
