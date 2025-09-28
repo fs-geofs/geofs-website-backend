@@ -1,14 +1,14 @@
 import subprocess
 import os
 
-from .envs import GIT_CONTENT_BASE_PATH, GIT_CONTENT_PATH, GIT_CONTENT_URL
+from .envs import GIT_CONTENT_BASE_PATH, GIT_CONTENT_URL, CONTENT_PATH
 from .errors import GitError
 
 
 def clone_folder_structure():
 
     # nothing to clone if it exists already
-    if os.path.exists(GIT_CONTENT_PATH):
+    if os.path.exists(CONTENT_PATH):
         return
 
     proc = subprocess.run(
@@ -24,7 +24,7 @@ def clone_folder_structure():
 def pull_updates():
     proc = subprocess.run(
         ["git", "pull"],
-        cwd=GIT_CONTENT_PATH,
+        cwd=CONTENT_PATH,
         capture_output=True
     )
 
