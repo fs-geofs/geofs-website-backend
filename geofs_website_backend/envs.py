@@ -35,7 +35,7 @@ if GITHUB_CONTENT_REPO is not None:
         )
 
     GIT_CONTENT_DIR = GITHUB_CONTENT_REPO.split("/")[-1]  # name of the repo w/o author
-    GIT_CONTENT_BASE_PATH = ".."  # path in which the repo will be cloned
+    GIT_CONTENT_BASE_PATH = "../git-content"  # path in which the repo will be cloned
     GIT_CONTENT_URL = f"https://github.com/{GITHUB_CONTENT_REPO}.git"  # repo URL to clone
 else:
     GIT_CONTENT_DIR = None
