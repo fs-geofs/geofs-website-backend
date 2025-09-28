@@ -26,11 +26,22 @@ GITHUB_WEBHOOK_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", None)
 # All required datafiles must exist in repo, otherwise backend will not start
 # Use in the following way: orga/repo, i.e. fs-geofs/geofs-website-content
 GITHUB_CONTENT_REPO = os.environ.get("GITHUB_CONTENT_REPO", None)
+
+# Check that both ENVs are set
+if (GITHUB_WEBHOOK_SECRET is None) != (GITHUB_CONTENT_REPO is None):
+    raise EnvVariableError(
+        "Invalid state of ENVs:\n"
+        "Only one of GITHUB_WEBHOOK_SECRET or GITHUB_CONTENT_REPO is set.\n"
+        "Set both to use the backend in File mode, or set both to use the backend "
+        "in Github Mode. Setting"
+    )
+
+
 if GITHUB_CONTENT_REPO is not None:
     valid_repo = _check_github_repo_name(GITHUB_CONTENT_REPO)
     if not valid_repo:
         raise EnvVariableError(
-            "GIT_CONTENT_REPO is not a valid env. "
+            "GIT_CONTENT_REPO is invalid. "
             "Must be format orga/repo, i.e. fs-geofs/geofs-website-content"
         )
 
