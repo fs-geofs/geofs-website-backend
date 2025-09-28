@@ -29,22 +29,16 @@ def _verify_signature(payload_body: bytes, signature_header: str) -> tuple[bool,
     return True, 201, "success"
 
 
-def github_webhook():
+def _handle_ping():
+    return "pong", 200
 
-    payload = request.data
-    signature_header = request.headers.get("x-hub-signature-256", None)
 
-    # verify signature to make sure that it is actually our repo which sends the request
-    valid, err_code, msg = _verify_signature(payload, signature_header)
-
-    if not valid:
-        return msg, err_code
-
+def _handle_push():
     data = request.json
 
     # Make sure the webhook was triggered because a push happend on branch "main"
     if "ref" not in data or data["ref"] != "refs/heads/main":
-        return "Nothing to do, no push on main", 201
+        return "Nothing to do, no push on main", 200
 
     try:
         pull_updates()
@@ -59,7 +53,28 @@ def github_webhook():
                "The changed content is not visible on website.")
         return err, 400
 
-    return "Contents pulled, validated and updated on website.", 200
+    return "Contents pulled, validated and updated on website.", 201
+
+
+def github_webhook():
+
+    payload = request.data
+    signature_header = request.headers.get("x-hub-signature-256", None)
+
+    # verify signature to make sure that it is actually our repo which sends the request
+    valid, err_code, msg = _verify_signature(payload, signature_header)
+
+    if not valid:
+        return msg, err_code
+
+    event = request.headers.get("X-GitHub-Event")
+
+    if event == "ping":
+        return _handle_ping()
+    elif event == "push":
+        return _handle_push()
+
+    return f"Handler for event of type {event} not implemented", 503
 
 
 def webhook_disabled():
