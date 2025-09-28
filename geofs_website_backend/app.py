@@ -37,6 +37,7 @@ try:
     else:
         git_utils.clone_folder_structure()  # check if git repo is not cloned yet, and clone it
         git_utils.pull_updates()  # pull lates updates from repo
+        git_utils.make_loacal_dummy_data_folder()
     utils.check_all_data_files_against_schema()  # check if all data files conform to their schema
 except IntegrityError as e:
     print("Startup Checks for backend server failed.")
