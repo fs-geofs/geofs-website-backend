@@ -14,6 +14,8 @@ def _check_github_repo_name(repo_name: str):
     return valid
 
 
+LOCAL_CONTENT_PATH = "data"
+
 # Secret for generating sha-256 signature in github webhook
 # used to verify that github request was actually made by our repo(s)
 GITHUB_WEBHOOK_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", None)
