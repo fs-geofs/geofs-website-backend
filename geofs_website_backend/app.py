@@ -40,15 +40,19 @@ try:
         git_utils.make_loacal_dummy_data_folder()
     utils.check_all_data_files_against_schema()  # check if all data files conform to their schema
 except IntegrityError as e:
-    print("Startup Checks for backend server failed.")
+    print("Startup Checks for backend server failed. Data file does not follow schema ")
     print(e)
     shutdown_on_error()
 except EnvVariableError as e:
-    print("Startup Checks for backend server failed. Invalid Environment variable.")
+    print("Startup Checks for backend server failed: Invalid Environment variable.")
     print(e)
     shutdown_on_error()
 except GitError as e:
-    print("Startup checks for backend server failed due to issues with git.")
+    print("Startup checks for backend server failed: Issues with git.")
+    print(e)
+    shutdown_on_error()
+except FileNotFoundError as e:
+    print("Startup checks for backend server failed: Required data file was not found")
     print(e)
     shutdown_on_error()
 except Exception as e:
