@@ -13,7 +13,7 @@ from .errors import IntegrityError, EnvVariableError, GitError
 
 from .webhook import github_webhook, webhook_disabled
 
-from .envs import GIT_CONTENT_REPO
+from .envs import GITHUB_CONTENT_REPO
 
 import sys
 
@@ -32,7 +32,7 @@ try:
     utils.check_template_file_presence()  # Check if all data templates are there:
     utils.check_schema_file_presence()  # check if all schema files are there:
     utils.check_all_schema_file_validity()  # check if all schema files are valid jsonschema-2020-12 schemas
-    if GIT_CONTENT_REPO is None:
+    if GITHUB_CONTENT_REPO is None:
         utils.create_data_folder_structure()  # Check if the data folder structure exists; If not, create it
     else:
         git_utils.clone_folder_structure()  # check if git repo is not cloned yet, and clone it
@@ -165,7 +165,7 @@ def make_jobs_response(path: str) -> list:
 #######################
 
 # webhook for geofs-website-content to fetch updates to website content from github
-if GIT_CONTENT_REPO is not None:
+if GITHUB_CONTENT_REPO is not None:
     app.route("/webhook/update-website-content", methods=["POST"])(github_webhook)
 else:
     app.route("/webhook/update-website-content", methods=["POST"])(webhook_disabled)
