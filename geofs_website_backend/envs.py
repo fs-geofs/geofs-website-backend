@@ -23,7 +23,7 @@ GITHUB_WEBHOOK_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", None)
 # Required if github webhook should be used to update website content
 # All required datafiles must exist in repo, otherwise backend will not start
 # Use in the following way: orga/repo, i.e. fs-geofs/geofs-website-content
-GITHUB_CONTENT_REPO = os.environ.get("GIT_CONTENT_REPO", None)
+GITHUB_CONTENT_REPO = os.environ.get("GITHUB_CONTENT_REPO", None)
 if GITHUB_CONTENT_REPO is not None:
     valid_repo = _check_github_repo_name(GITHUB_CONTENT_REPO)
     if not valid_repo:
