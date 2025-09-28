@@ -2,6 +2,9 @@ from flask import request
 import hashlib
 import hmac
 from .envs import GITHUB_WEBHOOK_SECRET
+from .git_utils import pull_updates
+from .errors import GitError, IntegrityError
+from .utils import check_all_data_files_against_schema
 
 
 def _verify_signature(payload_body: bytes, signature_header: str) -> tuple[bool, int, str]:
@@ -43,8 +46,21 @@ def github_webhook():
     if "ref" not in data or data["ref"] != "refs/heads/main":
         return "Nothing to do, no push on main", 201
 
-    # Now we can be sure that a push on main happened
-    return "Updating not implemented", 501
+    try:
+        pull_updates()
+    except GitError as e:
+        return f"Failed to pull updates from github.", 500
+
+    try:
+        check_all_data_files_against_schema()
+    except IntegrityError:
+        err = ("Changes pulled, but one or more file are invalid.\n"
+               "Either, one file is either no valid JSON, or does not conform to its schema.\n"
+               "The changed content is not visible on website.")
+        return err, 400
+
+    return "Contents pulled, validated and updated on website.", 200
+
 
 def webhook_disabled():
     return "Webhook integration disabled", 404
