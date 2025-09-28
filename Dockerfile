@@ -5,8 +5,11 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apk update
-RUN apk upgrade
-# todo: install git
+RUN apk upgrade --no-cache
+RUN apk add --no-cache git
+
+RUN mkdir git-content
+RUN chown 1000:1000 git-content
 
 WORKDIR /app
 
