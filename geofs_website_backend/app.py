@@ -13,7 +13,7 @@ from .errors import IntegrityError, EnvVariableError, GitError
 
 from .webhook import github_webhook, webhook_disabled
 
-from .envs import GITHUB_CONTENT_REPO
+from .envs import GITHUB_CONTENT_REPO, CONTENT_PATH
 
 import sys
 
@@ -239,7 +239,7 @@ def jahrgaenge():
 @handle_errors
 def jobs():
 
-    path = "data/gi/jobs"
+    path = f"{CONTENT_PATH}/gi/jobs"
     return make_jobs_response(path)
 
 
@@ -253,7 +253,7 @@ def news():
     # Therefore, only the first 5 latest articles are read by default (page=0),
     # the next 5 articles can be read on page 1, and so on...
 
-    path = "data/gi/news"
+    path = f"{CONTENT_PATH}/gi/news"
     page = request.args.get("page")
     return make_news_response(path, page)
 
@@ -321,7 +321,7 @@ def geoloek_news():
     # Therefore, only the first 5 latest articles are read by default (page=0),
     # the next 5 articles can be read on page 1, and so on...
 
-    path = "data/geoloek/news"
+    path = f"{CONTENT_PATH}/geoloek/news"
     page = request.args.get("page")
     return make_news_response(path, page)
 
@@ -329,5 +329,5 @@ def geoloek_news():
 @app.route("/geoloek_joblistings")
 @handle_errors
 def geoloek_jobs():
-    path = "data/geoloek/jobs"
+    path = f"{CONTENT_PATH}/geoloek/jobs"
     return make_jobs_response(path)
