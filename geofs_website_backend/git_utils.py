@@ -11,6 +11,9 @@ def clone_folder_structure():
     if os.path.exists(CONTENT_PATH):
         return
 
+    if not os.path.exists(GIT_CONTENT_BASE_PATH):
+        os.mkdir(GIT_CONTENT_BASE_PATH)
+
     proc = subprocess.run(
         ["git", "clone", GIT_CONTENT_URL],
         cwd=GIT_CONTENT_BASE_PATH,
