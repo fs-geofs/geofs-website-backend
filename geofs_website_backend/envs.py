@@ -22,7 +22,7 @@ if GIT_CONTENT_REPO is not None:
         )
 
     GIT_CONTENT_DIR = GIT_CONTENT_REPO.split("/")[-1]
-    GIT_CONTENT_PATH = "/" + GIT_CONTENT_DIR
+    GIT_CONTENT_PATH = "../" + GIT_CONTENT_DIR
     GIT_CONTENT_URL = f"https://github.com/{GIT_CONTENT_REPO}.git"
 else:
     GIT_CONTENT_DIR = None
