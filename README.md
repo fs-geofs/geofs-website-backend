@@ -12,14 +12,15 @@ This backend is meant to be used in combination with the following repositories:
 - Content:
   [fs-geofs/geofs-website-content](https://github.com/fs-geofs/geofs-website-content)
 
-## Installation
+## Development
 
-Python 3.12 was used while developing this backend, it is recommended to use a virtual
-environment for developments.
+Python 3.12 was used while developing this backend. For package managemet, use 
+[uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-- Install dependencies using `pip install -r requirements.txt`
-- (optional:) set ENVs if you want to use Github Mode (see below)
-- To start the server in dev mode, run `run.py`
+1. Clone the repository
+2. Install dependencies using `uv sync --group dev`
+3. (optional:) set ENVs if you want to use Github Mode (see below)
+4. To start the server in dev mode, run `run.py`
 
 ## Backend Modes
 
