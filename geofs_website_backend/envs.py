@@ -1,6 +1,17 @@
 from .errors import EnvVariableError
 import os
-import git_utils
+import re
+
+def _check_github_repo_name(repo_name: str):
+    """
+    Check whether a string is a valid github repo, i.e. fs-geofs/geofs-website-content
+    :param repo_name: The string to be checked
+    :return:
+    """
+
+    pattern = re.compile(r"^(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,39})\/(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,100})$")
+    valid = bool(pattern.match(repo_name))
+    return valid
 
 
 # Secret for generating sha-256 signature in github webhook
@@ -14,7 +25,7 @@ GITHUB_WEBHOOK_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", None)
 # Use in the following way: orga/repo, i.e. fs-geofs/geofs-website-content
 GIT_CONTENT_REPO = os.environ.get("GIT_CONTENT_REPO", None)
 if GIT_CONTENT_REPO is not None:
-    valid_repo = git_utils.check_repo_name(GIT_CONTENT_REPO)
+    valid_repo = _check_github_repo_name(GIT_CONTENT_REPO)
     if not valid_repo:
         raise EnvVariableError(
             "GIT_CONTENT_REPO is not a valid env. "
