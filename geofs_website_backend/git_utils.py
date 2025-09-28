@@ -1,20 +1,32 @@
-import re
 import subprocess
+import os
 
+from .envs import GIT_CONTENT_BASE_PATH, GIT_CONTENT_PATH, GIT_CONTENT_URL
+from .errors import GitError
 
-def check_repo_name(repo_name: str):
-    """
-    Check whether a string is a valid github repo, i.e. fs-geofs/geofs-website-content
-    :param repo_name: The string to be checked
-    :return:
-    """
-
-    pattern = re.compile(r"^(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,39})\/(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,100})$")
-    valid = bool(pattern.match(repo_name))
-    return valid
 
 def clone_folder_structure():
-    pass
+
+    # nothing to clone if it exists already
+    if os.path.exists(GIT_CONTENT_PATH):
+        return
+
+    proc = subprocess.run(
+        ["git", "clone", GIT_CONTENT_URL],
+        cwd=GIT_CONTENT_BASE_PATH,
+        capture_output=True
+    )
+
+    if proc.returncode != 0:
+        raise GitError(proc.stderr.decode())
+
 
 def pull_updates():
-    pass
+    proc = subprocess.run(
+        ["git", "pull"],
+        cwd=GIT_CONTENT_PATH,
+        capture_output=True
+    )
+
+    if proc.returncode != 0:
+        raise GitError(proc.stderr.decode())
