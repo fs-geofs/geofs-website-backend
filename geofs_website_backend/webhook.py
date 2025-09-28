@@ -1,13 +1,17 @@
-from flask import request
 import hashlib
 import hmac
+
+from flask import request
+
 from .envs import GITHUB_WEBHOOK_SECRET
-from .git_utils import pull_updates
 from .errors import GitError, IntegrityError
+from .git_utils import pull_updates
 from .utils import check_all_data_files_against_schema
 
 
-def _verify_signature(payload_body: bytes, signature_header: str) -> tuple[bool, int, str]:
+def _verify_signature(
+    payload_body: bytes, signature_header: str
+) -> tuple[bool, int, str]:
     """Verify that the payload was sent from GitHub by validating SHA256.
 
     Raise and return 403 if not authorized.
@@ -20,7 +24,11 @@ def _verify_signature(payload_body: bytes, signature_header: str) -> tuple[bool,
     if not signature_header:
         return False, 403, "x-hub-signature-256 header is missing!"
 
-    hash_object = hmac.new(GITHUB_WEBHOOK_SECRET.encode('utf-8'), msg=payload_body, digestmod=hashlib.sha256)
+    hash_object = hmac.new(
+        GITHUB_WEBHOOK_SECRET.encode("utf-8"),
+        msg=payload_body,
+        digestmod=hashlib.sha256,
+    )
     expected_signature = "sha256=" + hash_object.hexdigest()
 
     if not hmac.compare_digest(expected_signature, signature_header):
@@ -48,16 +56,17 @@ def _handle_push():
     try:
         check_all_data_files_against_schema()
     except IntegrityError:
-        err = ("Changes pulled, but one or more file are invalid.\n"
-               "Either, one file is either no valid JSON, or does not conform to its schema.\n"
-               "The changed content is not visible on website.")
+        err = (
+            "Changes pulled, but one or more file are invalid.\n"
+            "Either, one file is either no valid JSON, or does not conform to its schema.\n"
+            "The changed content is not visible on website."
+        )
         return err, 400
 
     return "Contents pulled, validated and updated on website.", 201
 
 
 def github_webhook():
-
     payload = request.data
     signature_header = request.headers.get("x-hub-signature-256", None)
 

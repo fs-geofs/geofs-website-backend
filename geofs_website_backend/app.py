@@ -1,25 +1,21 @@
-from flask import Flask, make_response, request, Response
 import json
-
-from jsonschema.exceptions import ValidationError
-from . import utils
-from . import git_utils
-from os.path import join
-from functools import wraps
-
-from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
-
-from .errors import IntegrityError, EnvVariableError, GitError
-
-from .webhook import github_webhook, webhook_disabled
-
-from .envs import GITHUB_CONTENT_REPO, CONTENT_PATH
-
 import sys
+from functools import wraps
+from os.path import join
+
+from flask import Flask, Response, make_response, request
+from jsonschema.exceptions import ValidationError
+
+from . import git_utils, utils
+from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
+from .envs import CONTENT_PATH, GITHUB_CONTENT_REPO
+from .errors import EnvVariableError, GitError, IntegrityError
+from .webhook import github_webhook, webhook_disabled
 
 ############################
 #  Perform startup checks  #
 ############################
+
 
 def shutdown_on_error():
     # DO NOT CHANGE EXIT CODE 4!!!!!!
@@ -70,6 +66,7 @@ def handle_errors(func):
     :param func: Callback function
     :return: the wrapped function
     """
+
     @wraps(func)
     def wrapper_func(*args, **kwargs):
         try:
@@ -85,10 +82,13 @@ def handle_errors(func):
         except FileNotFoundError as err:
             print("Could not find specified file")
             print(err)
-            return {"error": "Could not locate a specific file. See console output for details"}, 500
+            return {
+                "error": "Could not locate a specific file. See console output for details"
+            }, 500
         except Exception as err:
             print(err)
             return {"error": "An internal server error has occured."}, 500
+
     return wrapper_func
 
 
@@ -100,7 +100,9 @@ def get_json_data(datafiles_key: DatafileKeys) -> dict:
     """
     with open(DATAFILES[datafiles_key]["data"]) as file:
         data = json.load(file)
-    utils.validate_dict_againt_schema(DATAFILES[datafiles_key]["schema_validator"], data)
+    utils.validate_dict_againt_schema(
+        DATAFILES[datafiles_key]["schema_validator"], data
+    )
     return data
 
 
@@ -139,17 +141,17 @@ def make_news_response(path: str, page: str) -> dict:
 
     response = {
         "next": page + 1 if (page + 1) * items_per_page < len(filenames) else None,
-        "prev": page - 1 if page != 0 else None
+        "prev": page - 1 if page != 0 else None,
     }
     data = []
     for filename in filenames[start_index:end_index]:
         with open(join(path, filename)) as file:
-            filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
-        data.append({
-            "id": filename,
-            "date": filename.split("_")[0],
-            "content": filecontent
-        })
+            filecontent = file.read().replace(
+                "\n", " "
+            )  # read file and replace newline with dash
+        data.append(
+            {"id": filename, "date": filename.split("_")[0], "content": filecontent}
+        )
     response["news"] = data
     return response
 
@@ -160,7 +162,9 @@ def make_jobs_response(path: str) -> list:
     data = []
     for filename in filenames:
         with open(join(path, filename)) as file:
-            filecontent = file.read().replace("\n", " ")  # read file and replace newline with dash
+            filecontent = file.read().replace(
+                "\n", " "
+            )  # read file and replace newline with dash
         data.append({"id": filename, "content": filecontent})
     return data
 
@@ -197,7 +201,7 @@ def gremien():
 ########################
 
 
-@app.route('/erstiwoche')
+@app.route("/erstiwoche")
 @handle_errors
 def erstiwoche():
     return get_json_data("gi_erstiwoche")
@@ -242,7 +246,6 @@ def jahrgaenge():
 @app.route("/joblistings")
 @handle_errors
 def jobs():
-
     path = f"{CONTENT_PATH}/gi/jobs"
     return make_jobs_response(path)
 

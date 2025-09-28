@@ -7,7 +7,7 @@ frontend.
 
 This backend is meant to be used in combination with the following repositories:
 
-- Frontend: 
+- Frontend:
   [fs-geofs/geofs-website](https://github.com/fs-geofs/geofs-website)
 - Content:
   [fs-geofs/geofs-website-content](https://github.com/fs-geofs/geofs-website-content)
@@ -33,8 +33,8 @@ saves them. Files are located in `./data`
 ### Github mode
 
 For more convenient editing, files are editied inside the Github content repository.
-When changes are pushed on the `main` branch, a webhook in github triggers the backend 
-to pull the content repository to get the latest updates. Files are located in 
+When changes are pushed on the `main` branch, a webhook in github triggers the backend
+to pull the content repository to get the latest updates. Files are located in
 `../git-content/<content-repo-name>`
 
 In this case, files **must not** be edited through the file system so they do not fall
@@ -44,7 +44,7 @@ Another advantage is that using this mode we get versioning and some sort of bac
 on top for free.
 
 ## Webhooks
- 
+
 The following are instructions to set up the webhook on Github to auto-update.
 To enable this functionality, both ENVs (see below) must be set when running the backend
 
@@ -56,15 +56,15 @@ To enable this functionality, both ENVs (see below) must be set when running the
    - URL: `https://<public-domain>/webhook/update-website-content/`
    - Content-Type: `application/json`
    - Secret: A very secret text string, remember for later
-   - Just the `push` event 
+   - Just the `push` event
 4. Click Activate webhook
 5. In the reverse proxy, make the following rules, here example for nginx.
-6. Note that github might change in the future, most recent ones are listed 
+6. Note that github might change in the future, most recent ones are listed
    [here](https://api.github.com/meta) under `hooks`.
    ```
    # expose webhook to update website content, proxy to webhook endpoint
    location /webhook/update-website-content/ {
-   	    
+
        # allow github IPs
        allow 192.30.252.0/22;
        allow 185.199.108.0/22;
@@ -72,26 +72,26 @@ To enable this functionality, both ENVs (see below) must be set when running the
        allow 143.55.64.0/20;
        allow 2a0a:a440::/29;
        allow 2606:50c0::/32;
-   
+
        # disallow all others
        deny all;
-       
+
        proxy_pass http://website-backend:8000/webhook/update-website-content;
        proxy_set_header Host $host;
        proxy_set_header X-Real-IP $remote_addr;
        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
        proxy_set_header X-Forwarded-Proto $scheme;
    }
-   	
+
    # disallow calls to any sub-paths
    location ^~ /webhook/update-website-content/* {
        return 404;
    }
    ```
-   
+
 ### For Dev
 
-For development, use webhook-forwarding to forward the Github's webook request to the 
+For development, use webhook-forwarding to forward the Github's webook request to the
 local environment.
 
 1. Install [Github-CLI](https://cli.github.com/)
@@ -113,7 +113,7 @@ For running this backend in Github mode, both the following ENVs must be set:
 - GITHUB_CONTENT_REPO: Name of the repository that holds the content
   i.e. `fs-geofs/geofs-website-content`
 
-If none of the ENVs is set, the backend will use file editing mode, no github 
+If none of the ENVs is set, the backend will use file editing mode, no github
 integration is available and the webhook will not work.
 
 If one of the two ENVs is set, the Server will not start.

@@ -1,6 +1,8 @@
-from .errors import EnvVariableError
 import os
 import re
+
+from .errors import EnvVariableError
+
 
 def _check_github_repo_name(repo_name: str):
     """
@@ -9,7 +11,9 @@ def _check_github_repo_name(repo_name: str):
     :return:
     """
 
-    pattern = re.compile(r"^(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,39})\/(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,100})$")
+    pattern = re.compile(
+        r"^(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,39})\/(?![-_.])(?!.*[-_.]$)([A-Za-z0-9._-]{1,100})$"
+    )
     valid = bool(pattern.match(repo_name))
     return valid
 
@@ -47,10 +51,14 @@ if GITHUB_CONTENT_REPO is not None:
 
     GIT_CONTENT_DIR = GITHUB_CONTENT_REPO.split("/")[-1]  # name of the repo w/o author
     GIT_CONTENT_BASE_PATH = "../git-content"  # path in which the repo will be cloned
-    GIT_CONTENT_URL = f"https://github.com/{GITHUB_CONTENT_REPO}.git"  # repo URL to clone
+    GIT_CONTENT_URL = (
+        f"https://github.com/{GITHUB_CONTENT_REPO}.git"  # repo URL to clone
+    )
 else:
     GIT_CONTENT_DIR = None
     GIT_CONTENT_BASE_PATH = None
     GIT_CONTENT_URL = None
 
-CONTENT_PATH = f"{GIT_CONTENT_BASE_PATH}/{GIT_CONTENT_DIR}" if GITHUB_CONTENT_REPO else "data"
+CONTENT_PATH = (
+    f"{GIT_CONTENT_BASE_PATH}/{GIT_CONTENT_DIR}" if GITHUB_CONTENT_REPO else "data"
+)

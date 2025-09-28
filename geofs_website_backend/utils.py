@@ -1,16 +1,14 @@
+import json
 import os.path
+import shutil
+from json.decoder import JSONDecodeError
 from os import listdir
 from os.path import isfile, join
-import shutil
-
-import json
-from json.decoder import JSONDecodeError
 
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import SchemaError, ValidationError
 
 from .datafiles import DATAFILES, OTHER_FILES
-
 from .errors import IntegrityError
 
 
@@ -33,13 +31,14 @@ def get_html_filenames_in_directory(path: str) -> list[str]:
     :return: List of all html filenames
     """
     # list all files in given directory
-    files = [f for f in listdir(path) if isfile(join(path, f)) and f.split(".")[-1] == "html"]
+    files = [
+        f for f in listdir(path) if isfile(join(path, f)) and f.split(".")[-1] == "html"
+    ]
     files.sort(reverse=True)
     return files
 
 
 def check_template_file_presence():
-
     # json files
     for template_path in [DATAFILES[file]["template"] for file in DATAFILES]:
         if not os.path.exists(template_path):
@@ -64,15 +63,19 @@ def check_all_schema_file_validity():
             with open(schema_path) as schemafile:
                 schema = json.load(schemafile)
         except JSONDecodeError as e:
-            raise IntegrityError(f"{schema_path} is not a valid JSON-File. Check the file's syntax and try again.\n" +
-                                 str(e))
+            raise IntegrityError(
+                f"{schema_path} is not a valid JSON-File. Check the file's syntax and try again.\n"
+                + str(e)
+            )
 
         try:
             validate_schema(schema)
             DATAFILES[file]["schema_validator"] = Draft202012Validator(schema)
         except SchemaError:
-            raise IntegrityError("Invlaid Schema (schema file does not conform to Jsonschema-2020-12 standard: "
-                                 + schema_path)
+            raise IntegrityError(
+                "Invlaid Schema (schema file does not conform to Jsonschema-2020-12 standard: "
+                + schema_path
+            )
 
 
 def check_all_data_files_against_schema():
@@ -89,8 +92,10 @@ def check_all_data_files_against_schema():
             with open(data_file_path) as datafile:
                 data = json.load(datafile)
         except JSONDecodeError as e:
-            raise IntegrityError(f"{data_file_path} is not a valid JSON-File. Check file syntax and try again.\n" +
-                                 str(e))
+            raise IntegrityError(
+                f"{data_file_path} is not a valid JSON-File. Check file syntax and try again.\n"
+                + str(e)
+            )
 
         try:
             validate_dict_againt_schema(validator, data)
@@ -98,13 +103,11 @@ def check_all_data_files_against_schema():
             raise IntegrityError(
                 "JSON-File does not conform to its schema\n"
                 "JSON: " + data_file_path + "\n"
-                                            "Schema: " + schema_file_path +
-                "Error Detail:\n" + str(e)
+                "Schema: " + schema_file_path + "Error Detail:\n" + str(e)
             )
 
 
 def create_data_folder_structure():
-
     # order of directories is important
     # check for parent directories first
     required_directories_paths = [
@@ -118,7 +121,7 @@ def create_data_folder_structure():
         "data/gi/studium",
         "data/geoloek",
         "data/geoloek/news",
-        "data/geoloek/jobs"
+        "data/geoloek/jobs",
     ]
 
     for path in required_directories_paths:
@@ -134,5 +137,5 @@ def create_data_folder_structure():
             shutil.copy(other_file["template"], other_file["data"])
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     check_all_data_files_against_schema()
