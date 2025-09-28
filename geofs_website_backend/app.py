@@ -2,13 +2,14 @@ from flask import Flask, make_response, request, Response
 import json
 
 from jsonschema.exceptions import ValidationError
-from . import utils, git_utils
+from . import utils
+from . import git_utils
 from os.path import join
 from functools import wraps
 
 from .datafiles import DATAFILES, OTHER_FILES, DatafileKeys, OtherfilesKeys
 
-from .errors import IntegrityError, EnvVariableError
+from .errors import IntegrityError, EnvVariableError, GitError
 
 from .webhook import github_webhook, webhook_disabled
 
@@ -19,6 +20,12 @@ import sys
 ############################
 #  Perform startup checks  #
 ############################
+
+def shutdown_on_error():
+    # DO NOT CHANGE EXIT CODE 4!!!!!!
+    # Code 4 is required to take effect in gunicorn deployment
+    # Gunicorn is used inside Docker build
+    sys.exit(4)
 
 
 try:
@@ -34,27 +41,19 @@ try:
 except IntegrityError as e:
     print("Startup Checks for backend server failed.")
     print(e)
-
-    # DO NOT CHANGE EXIT CODE 4!!!!!!
-    # Code 4 is required to take effect in gunicorn deployment
-    # Gunicorn is used inside Docker build
-    sys.exit(4)
+    shutdown_on_error()
 except EnvVariableError as e:
     print("Startup Checks for backend server failed. Invalid Environment variable.")
     print(e)
-
-    # DO NOT CHANGE EXIT CODE 4!!!!!!
-    # Code 4 is required to take effect in gunicorn deployment
-    # Gunicorn is used inside Docker build
-    sys.exit(4)
+    shutdown_on_error()
+except GitError as e:
+    print("Startup checks for backend server failed due to issues with git.")
+    print(e)
+    shutdown_on_error()
 except Exception as e:
     print("Startup Checks for backend server failed. An unforseen error occured:")
     print(e)
-
-    # DO NOT CHANGE EXIT CODE 4!!!!!!
-    # Code 4 is required to take effect in gunicorn deployment
-    # Gunicorn is used inside Docker build
-    sys.exit(4)
+    shutdown_on_error()
 
 
 app = Flask(__name__)
