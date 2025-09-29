@@ -11,6 +11,9 @@ from .errors import GitError
 
 
 def clone_folder_structure():
+    if GIT_CONTENT_URL is None:
+        raise GitError("Cannot clone Repo, as GIT_CONTENT_REPO is None")
+
     # nothing to clone if it exists already
     if os.path.exists(CONTENT_PATH):
         return
