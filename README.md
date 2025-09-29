@@ -14,13 +14,15 @@ This backend is meant to be used in combination with the following repositories:
 
 ## Development
 
-Python 3.12 was used while developing this backend. For package managemet, use 
+Python 3.12 was used while developing this backend. For package managemet, use
 [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 1. Clone the repository
 2. Install dependencies using `uv sync --group dev`
 3. (optional:) set ENVs if you want to use Github Mode (see below)
-4. To start the server in dev mode, run `run.py`
+4. This repo uses pre-commit hooks. Install them using `pre-commit install`\
+   -> Before commiting, run `pre-commit run --all-files`
+5. To start the server in dev mode, run `uv run run.py`
 
 ## Backend Modes
 
