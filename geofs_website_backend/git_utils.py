@@ -35,6 +35,21 @@ def pull_updates():
         raise GitError(proc.stderr.decode())
 
 
+def switch_branch(branch_name: str):
+    """
+    Method to check out a specific branch of the content repo.
+    Only for testing purposes, do not call in production!!!
+    Production system should always use MAIN branch!!!
+    :param branch_name: Name of the branch to check out
+    """
+    proc = subprocess.run(
+        ["git", "checkout", branch_name], cwd=CONTENT_PATH, capture_output=True
+    )
+
+    if proc.returncode != 0:
+        raise GitError(proc.stderr.decode())
+
+
 def make_loacal_dummy_data_folder():
     # make a local dummy folder and place a file in it explaining where the content is
     # to not confuse people who are used to the local "data" content path
