@@ -1,6 +1,11 @@
 {
   "type": "object",
-  "required": ["year", "start", "end", "schedule"],
+  "required": [
+    "year",
+    "start",
+    "end",
+    "schedule"
+  ],
   "additionalProperties": false,
   "properties": {
     "year": {
@@ -14,7 +19,13 @@
     },
     "schedule": {
       "type": "object",
-      "required": ["montag", "dienstag", "mittwoch", "donnerstag", "freitag"],
+      "required": [
+        "montag",
+        "dienstag",
+        "mittwoch",
+        "donnerstag",
+        "freitag"
+      ],
       "properties": {
         "montag": {
           "$ref": "#/$defs/dailySchedule"
@@ -44,7 +55,21 @@
   "$defs": {
     "dailySchedule": {
       "type": "object",
-      "required": ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"],
+      "required": [
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
       "properties": {
         "9": {
           "$ref": "#/$defs/hourlyProgram"
@@ -89,21 +114,35 @@
       "additionalProperties": false
     },
     "hourlyProgram": {
-      "type": ["object", "null"],
-      "required": ["title", "detail"],
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "title",
+        "detail"
+      ],
       "properties": {
         "title": {
           "type": "string"
         },
         "detail": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "additionalProperties": false
     },
     "location": {
       "type": "object",
-      "required": ["title", "erklaerung", "detail", "osmlink"],
+      "required": [
+        "title",
+        "erklaerung",
+        "detail",
+        "osmlink"
+      ],
       "properties": {
         "title": {
           "type": "string"
@@ -112,10 +151,16 @@
           "type": "string"
         },
         "detail": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "osmlink": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "additionalProperties": false

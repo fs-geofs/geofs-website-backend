@@ -1,6 +1,10 @@
 {
   "type": "object",
-  "required": ["stand", "fstermine", "other"],
+  "required": [
+    "stand",
+    "fstermine",
+    "other"
+  ],
   "additionalProperties": false,
   "properties": {
     "stand": {
@@ -23,7 +27,11 @@
   "$defs": {
     "termin": {
       "type": "object",
-      "required": ["date", "description", "infolink"],
+      "required": [
+        "date",
+        "description",
+        "infolink"
+      ],
       "additionalProperties": false,
       "properties": {
         "date": {

@@ -1,6 +1,12 @@
 {
   "type": "object",
-  "required": ["montag", "dienstag", "mittwoch", "donnerstag", "freitag"],
+  "required": [
+    "montag",
+    "dienstag",
+    "mittwoch",
+    "donnerstag",
+    "freitag"
+  ],
   "properties": {
     "montag": {
       "$ref": "#/$defs/dailySchedule"
@@ -20,9 +26,16 @@
   },
   "additionalProperties": false,
   "$defs": {
-    "dailySchedule" : {
+    "dailySchedule": {
       "type": "object",
-      "required": ["8", "10", "12", "14", "16", "18"],
+      "required": [
+        "8",
+        "10",
+        "12",
+        "14",
+        "16",
+        "18"
+      ],
       "properties": {
         "8": {
           "$ref": "#/$defs/hourlyProgram"
@@ -46,8 +59,17 @@
       "additionalProperties": false
     },
     "hourlyProgram": {
-      "type": ["object", "null"],
-      "required": ["title", "location", "address", "qisserverlink", "learnweblink"],
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "title",
+        "location",
+        "address",
+        "qisserverlink",
+        "learnweblink"
+      ],
       "properties": {
         "title": {
           "type": "string"

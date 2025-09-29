@@ -1,12 +1,19 @@
 {
   "type": "object",
-  "required": ["vorstand", "minister", "andere_minister"],
+  "required": [
+    "vorstand",
+    "minister",
+    "andere_minister"
+  ],
   "properties": {
     "vorstand": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["title", "name"],
+        "required": [
+          "title",
+          "name"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -34,7 +41,11 @@
   "$defs": {
     "ministerium_details": {
       "type": "object",
-      "required": ["title", "name1", "name2"],
+      "required": [
+        "title",
+        "name1",
+        "name2"
+      ],
       "properties": {
         "title": {
           "type": "string"

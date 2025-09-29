@@ -2,7 +2,11 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["was", "von", "bis"],
+    "required": [
+      "was",
+      "von",
+      "bis"
+    ],
     "properties": {
       "was": {
         "type": "string"
@@ -11,7 +15,10 @@
         "type": "string"
       },
       "bis": {
-        "type": ["string", "null"]
+        "type": [
+          "string",
+          "null"
+        ]
       }
     },
     "additionalProperties": false

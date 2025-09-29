@@ -145,7 +145,12 @@
           },
           "fs": {
             "type": "string",
-            "enum": ["GI", "Geow", "GeoLoek", ""]
+            "enum": [
+              "GI",
+              "Geow",
+              "GeoLoek",
+              ""
+            ]
           }
         },
         "additionalProperties": false

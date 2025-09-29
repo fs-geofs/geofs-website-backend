@@ -1,258 +1,258 @@
 {
-    "year": "2024/25",
-    "start": "04.10.2024",
-    "end": "07.10.2024",
-    "schedule": {
-        "montag": {
-            "9": null,
-            "10": {
-                "title": "Begrüßung",
-                "detail": "GEO1, HS"
-            },
-            "11": {
-                "title": "Begrüßung",
-                "detail": "GEO1, HS"
-            },
-            "12": {
-                "title": "Mentorengruppen",
-                "detail": null
-            },
-            "13": {
-                "title": "Mittagessen",
-                "detail": "Mensa"
-            },
-            "14": {
-                "title": "Vorstellung Stundenplan",
-                "detail": null
-            },
-            "15": {
-                "title": "Vorstellung Stundenplan",
-                "detail": null
-            },
-            "16": null,
-            "17": null,
-            "18": null,
-            "19": {
-                "title": "Spieleabend",
-                "detail": "GEO1"
-            },
-            "20": {
-                "title": "Spieleabend",
-                "detail": "GEO1"
-            },
-            "21": {
-                "title": "Spieleabend",
-                "detail": "GEO1"
-            }
-        },
-        "dienstag": {
-            "9": null,
-            "10": {
-                "title": "Geo-Brunch",
-                "detail": "ab 10:30, Lichthof und Lernatelier GEO1"
-            },
-            "11": {
-                "title": "Stadtrallye",
-                "detail": "ab 11:30, Start GEO1"
-            },
-            "12": {
-                "title": "Stadtrallye",
-                "detail": null
-            },
-            "13": {
-                "title": "Stadtrallye",
-                "detail": null
-            },
-            "14": {
-                "title": "Stadtrallye",
-                "detail": null
-            },
-            "15": {
-                "title": "Stadtrallye",
-                "detail": null
-            },
-            "16": {
-                "title": "Stadtrallye",
-                "detail": null
-            },
-            "17": {
-                "title": "Stadtrallye",
-                "detail": null
-            },
-            "18": null,
-            "19": null,
-            "20": null,
-            "21": null
-        },
-        "mittwoch": {
-            "9": null,
-            "10": null,
-            "11": null,
-            "12": null,
-            "13": {
-                "title": "Vorstellung Stundenplan",
-                "detail": "und Fragestunde"
-            },
-            "14": {
-                "title": "Vorstellung Stundenplan",
-                "detail": null
-            },
-            "15": {
-                "title": "Vorstellung Stundenplan",
-                "detail": null
-            },
-            "16": {
-                "title": "Vorstellung allg. Studien",
-                "detail": null
-            },
-            "17": {
-                "title": "Fragestunde Geo",
-                "detail": null
-            },
-            "18": null,
-            "19": {
-                "title": "Filmabend",
-                "detail": "GEO1"
-            },
-            "20": {
-                "title": "Filmabend",
-                "detail": null
-            },
-            "21": {
-                "title": "Filmabend",
-                "detail": null
-            }
-        },
-        "donnerstag": {
-            "9": null,
-            "10": null,
-            "11": null,
-            "12": {
-                "title": "Exkursion",
-                "detail": null
-            },
-            "13": {
-                "title": "Exkursion",
-                "detail": null
-            },
-            "14": {
-                "title": "Exkursion",
-                "detail": null
-            },
-            "15": {
-                "title": "Exkursion",
-                "detail": null
-            },
-            "16": null,
-            "17": null,
-            "18": null,
-            "19": {
-                "title": "Kneipenrallye",
-                "detail": "Start am Domplatz"
-            },
-            "20": {
-                "title": "Kneipenrallye",
-                "detail": null
-            },
-            "21": {
-                "title": "Kneipenrallye",
-                "detail": null
-            }
-        },
-        "freitag": {
-            "9": null,
-            "10": null,
-            "11": {
-                "title": "Anmeldung ErstiWE",
-                "detail": "GEO1"
-            },
-            "12": {
-                "title": "Verabschiedung",
-                "detail": "GEO1, HS"
-            },
-            "13": {
-                "title": "Vorstellung Organisationen",
-                "detail": "GEO1, HS"
-            },
-            "14": {
-                "title": "Vorstellung Organisationen",
-                "detail": null
-            },
-            "15": null,
-            "16": null,
-            "17": null,
-            "18": null,
-            "19": null,
-            "20": {
-                "title": "Gemeinsamer Kneipenabend",
-                "detail": "Shooter Stars"
-            },
-            "21": {
-                "title": "Gemeinsamer Kneipenabend",
-                "detail": null
-            }
-        }
+  "year": "2024/25",
+  "start": "04.10.2024",
+  "end": "07.10.2024",
+  "schedule": {
+    "montag": {
+      "9": null,
+      "10": {
+        "title": "Begrüßung",
+        "detail": "GEO1, HS"
+      },
+      "11": {
+        "title": "Begrüßung",
+        "detail": "GEO1, HS"
+      },
+      "12": {
+        "title": "Mentorengruppen",
+        "detail": null
+      },
+      "13": {
+        "title": "Mittagessen",
+        "detail": "Mensa"
+      },
+      "14": {
+        "title": "Vorstellung Stundenplan",
+        "detail": null
+      },
+      "15": {
+        "title": "Vorstellung Stundenplan",
+        "detail": null
+      },
+      "16": null,
+      "17": null,
+      "18": null,
+      "19": {
+        "title": "Spieleabend",
+        "detail": "GEO1"
+      },
+      "20": {
+        "title": "Spieleabend",
+        "detail": "GEO1"
+      },
+      "21": {
+        "title": "Spieleabend",
+        "detail": "GEO1"
+      }
     },
-    "locations": [
-        {
-            "title": "GEO1",
-            "erklaerung": "\"Unser\" Gebäude, Adresse: Heisenbergstr. 2",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "HS/Hörsaal",
-            "erklaerung": "\"Unser\" Hörsaal im EG des GEO1",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "Lernatelier",
-            "erklaerung": "Im EG des GEO1, Raum-Nr. 10",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "Fachschaftsraum",
-            "erklaerung": "Im EG des GEO1, gegenüber des Hörsaals, Raum 23",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "323, 401, 513",
-            "erklaerung": "Raumnummern der Seminarräume im 3., 4., un 5. Stock",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "StudLab",
-            "erklaerung": "Computerräume im 1. OG des GEO1",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "Mensa am Ring",
-            "erklaerung": "Große Mensa am Coesfeler Kreuz, wir gehen gemeinsam hin",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "Bistro Denkpause",
-            "erklaerung": "Kleinere Mensa direkt gegenüber des GEO 1 (auch dort gehen wir gemeinsam hin)",
-            "detail": "(In welche Mensa wir gehen entscheidet sich ggf. spontan, vermutlich aber Bistro Denkpause)",
-            "osmlink": null
-        },
-        {
-            "title": "Domplatz",
-            "erklaerung": "Treffpunkt für die Kneipenrallye",
-            "detail": null,
-            "osmlink": null
-        },
-        {
-            "title": "Shooter Stars",
-            "erklaerung": "Gemeinsamer Kneipenabend zum Abschluss",
-            "detail": null,
-            "osmlink": null
-        }
-    ]
+    "dienstag": {
+      "9": null,
+      "10": {
+        "title": "Geo-Brunch",
+        "detail": "ab 10:30, Lichthof und Lernatelier GEO1"
+      },
+      "11": {
+        "title": "Stadtrallye",
+        "detail": "ab 11:30, Start GEO1"
+      },
+      "12": {
+        "title": "Stadtrallye",
+        "detail": null
+      },
+      "13": {
+        "title": "Stadtrallye",
+        "detail": null
+      },
+      "14": {
+        "title": "Stadtrallye",
+        "detail": null
+      },
+      "15": {
+        "title": "Stadtrallye",
+        "detail": null
+      },
+      "16": {
+        "title": "Stadtrallye",
+        "detail": null
+      },
+      "17": {
+        "title": "Stadtrallye",
+        "detail": null
+      },
+      "18": null,
+      "19": null,
+      "20": null,
+      "21": null
+    },
+    "mittwoch": {
+      "9": null,
+      "10": null,
+      "11": null,
+      "12": null,
+      "13": {
+        "title": "Vorstellung Stundenplan",
+        "detail": "und Fragestunde"
+      },
+      "14": {
+        "title": "Vorstellung Stundenplan",
+        "detail": null
+      },
+      "15": {
+        "title": "Vorstellung Stundenplan",
+        "detail": null
+      },
+      "16": {
+        "title": "Vorstellung allg. Studien",
+        "detail": null
+      },
+      "17": {
+        "title": "Fragestunde Geo",
+        "detail": null
+      },
+      "18": null,
+      "19": {
+        "title": "Filmabend",
+        "detail": "GEO1"
+      },
+      "20": {
+        "title": "Filmabend",
+        "detail": null
+      },
+      "21": {
+        "title": "Filmabend",
+        "detail": null
+      }
+    },
+    "donnerstag": {
+      "9": null,
+      "10": null,
+      "11": null,
+      "12": {
+        "title": "Exkursion",
+        "detail": null
+      },
+      "13": {
+        "title": "Exkursion",
+        "detail": null
+      },
+      "14": {
+        "title": "Exkursion",
+        "detail": null
+      },
+      "15": {
+        "title": "Exkursion",
+        "detail": null
+      },
+      "16": null,
+      "17": null,
+      "18": null,
+      "19": {
+        "title": "Kneipenrallye",
+        "detail": "Start am Domplatz"
+      },
+      "20": {
+        "title": "Kneipenrallye",
+        "detail": null
+      },
+      "21": {
+        "title": "Kneipenrallye",
+        "detail": null
+      }
+    },
+    "freitag": {
+      "9": null,
+      "10": null,
+      "11": {
+        "title": "Anmeldung ErstiWE",
+        "detail": "GEO1"
+      },
+      "12": {
+        "title": "Verabschiedung",
+        "detail": "GEO1, HS"
+      },
+      "13": {
+        "title": "Vorstellung Organisationen",
+        "detail": "GEO1, HS"
+      },
+      "14": {
+        "title": "Vorstellung Organisationen",
+        "detail": null
+      },
+      "15": null,
+      "16": null,
+      "17": null,
+      "18": null,
+      "19": null,
+      "20": {
+        "title": "Gemeinsamer Kneipenabend",
+        "detail": "Shooter Stars"
+      },
+      "21": {
+        "title": "Gemeinsamer Kneipenabend",
+        "detail": null
+      }
+    }
+  },
+  "locations": [
+    {
+      "title": "GEO1",
+      "erklaerung": "\"Unser\" Gebäude, Adresse: Heisenbergstr. 2",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "HS/Hörsaal",
+      "erklaerung": "\"Unser\" Hörsaal im EG des GEO1",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "Lernatelier",
+      "erklaerung": "Im EG des GEO1, Raum-Nr. 10",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "Fachschaftsraum",
+      "erklaerung": "Im EG des GEO1, gegenüber des Hörsaals, Raum 23",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "323, 401, 513",
+      "erklaerung": "Raumnummern der Seminarräume im 3., 4., un 5. Stock",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "StudLab",
+      "erklaerung": "Computerräume im 1. OG des GEO1",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "Mensa am Ring",
+      "erklaerung": "Große Mensa am Coesfeler Kreuz, wir gehen gemeinsam hin",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "Bistro Denkpause",
+      "erklaerung": "Kleinere Mensa direkt gegenüber des GEO 1 (auch dort gehen wir gemeinsam hin)",
+      "detail": "(In welche Mensa wir gehen entscheidet sich ggf. spontan, vermutlich aber Bistro Denkpause)",
+      "osmlink": null
+    },
+    {
+      "title": "Domplatz",
+      "erklaerung": "Treffpunkt für die Kneipenrallye",
+      "detail": null,
+      "osmlink": null
+    },
+    {
+      "title": "Shooter Stars",
+      "erklaerung": "Gemeinsamer Kneipenabend zum Abschluss",
+      "detail": null,
+      "osmlink": null
+    }
+  ]
 }
